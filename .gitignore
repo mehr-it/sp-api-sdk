@@ -1,0 +1,4 @@
+vendor/
+.openapi-generator
+.idea/
+var/

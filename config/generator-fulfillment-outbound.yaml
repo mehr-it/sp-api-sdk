@@ -1,0 +1,11 @@
+generatorName: php
+templateDir: sp-api/resources/php-amazon-selling-partner-api
+additionalProperties:
+  invokerPackage: MehrIt\AmazonSellingPartner
+  srcBasePath: src/MehrIt/AmazonSellingPartner
+  modelPackage: Model\FulfillmentOutbound
+  packageName: FulfillmentOutbound
+files:
+  api.mustache:
+    templateType: API
+    destinationFilename: /FulfillmentOutboundSDK.php

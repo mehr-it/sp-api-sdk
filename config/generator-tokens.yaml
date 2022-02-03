@@ -1,0 +1,12 @@
+generatorName: php
+templateDir: sp-api/resources/php-amazon-selling-partner-api
+additionalProperties:
+  invokerPackage: MehrIt\AmazonSellingPartner
+  srcBasePath: src/MehrIt/AmazonSellingPartner
+  modelPackage: Model\Tokens
+  packageName: Tokens
+  useTags: false
+files:
+  api.mustache:
+    templateType: API
+    destinationFilename: /TokensSDK.php
