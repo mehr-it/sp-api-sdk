@@ -263,7 +263,7 @@ final class NotificationsSDK
      *
      * @param AccessToken $accessToken
      * @param string $region
-     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      * @param \MehrIt\AmazonSellingPartner\Model\Notifications\CreateSubscriptionRequest $body body (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
@@ -364,7 +364,7 @@ final class NotificationsSDK
      *
      * @param AccessToken $accessToken
      * @param string $region
-     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      * @param \MehrIt\AmazonSellingPartner\Model\Notifications\CreateSubscriptionRequest $body (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
@@ -670,7 +670,7 @@ final class NotificationsSDK
      * @param AccessToken $accessToken
      * @param string $region
      * @param string $subscription_id The identifier for the subscription that you want to delete. (required)
-     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
@@ -771,7 +771,7 @@ final class NotificationsSDK
      * @param AccessToken $accessToken
      * @param string $region
      * @param string $subscription_id The identifier for the subscription that you want to delete. (required)
-     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
@@ -1254,7 +1254,7 @@ final class NotificationsSDK
      *
      * @param AccessToken $accessToken
      * @param string $region
-     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
@@ -1354,7 +1354,7 @@ final class NotificationsSDK
      *
      * @param AccessToken $accessToken
      * @param string $region
-     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
@@ -1450,7 +1450,7 @@ final class NotificationsSDK
      * @param AccessToken $accessToken
      * @param string $region
      * @param string $subscription_id The identifier for the subscription that you want to get. (required)
-     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
@@ -1551,7 +1551,7 @@ final class NotificationsSDK
      * @param AccessToken $accessToken
      * @param string $region
      * @param string $subscription_id The identifier for the subscription that you want to get. (required)
-     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $notification_type The type of notification.   For more information about notification types, see [the Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface

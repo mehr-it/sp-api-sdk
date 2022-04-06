@@ -1,0 +1,653 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This section provides APIs for selling partners to work with External Fulfillment inventory services.",
+    "version": "2021-01-06",
+    "title": "Selling Partner API for External Fulfillment Inventory Management",
+    "contact": {
+      "name": "Selling Partner API Test Support",
+      "url": "https://github.com/amzn/amazon-marketplace-api-sdk/issues",
+      "email": "marketplaceapitest@amazon.com"
+    },
+    "license": {
+      "name": "Amazon Software License",
+      "url": "https://aws.amazon.com/asl/"
+    }
+  },
+  "host": "sellingpartnerapi-na.amazon.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/externalFulfillment/inventory/2021-01-06/locations/{locationId}/skus/{skuId}": {
+      "put": {
+        "tags": [
+          "updateInventory"
+        ],
+        "description": "Update the inventory quantity of the given SKU in the specified location to the provided value across all channel where listing exists.",
+        "operationId": "updateInventory",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "description": "The node identifier for the seller's location in smart connect for which inventory is being updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "skuId",
+            "in": "path",
+            "description": "The listing identifier for which inventory is being updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "description": "The absolute number of items of the specified SKU available at the specified node. This value should always be a non-zero positive integer",
+            "required": true,
+            "type": "integer",
+            "minimum": 0,
+            "format": "int32"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "A unique number provided with each call to update the inventory. This number must be latest version of entity that exist in system. It will be equal to comparison against existing version of entity.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "If-Unmodified-Since",
+            "in": "header",
+            "description": "Timestamp or increasing number which does greater than comparison before applying the change. This is different than version of entity and used to overwrite the latest data. It should follow data/time format of rfc2616, e.g: Sun, 06 Nov 1994 08:49:37 GMT",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "headers": {
+              "x-amzn-RateLimit-Limit": {
+                "description": "Your rate limit (requests per second) for this operation.",
+                "type": "string"
+              },
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              },
+              "ETag": {
+                "type": "string",
+                "description": "contains a number which denotes the version of inventory snapshot."
+              },
+              "Last-Modified": {
+                "type": "string",
+                "description": "Notifies the last instance when entity was modified. It should follow data/time format of rfc2616, e.g: Sun, 06 Nov 1994 08:49:37 GMT."
+              }
+            },
+            "x-amzn-api-sandbox": {
+              "static": [
+                {
+                  "request": {
+                    "parameters": {
+                      "locationId": {
+                        "value": "43cd8cd4-a944-4fa8-a584-5e3b3efdb045"
+                      },
+                      "skuId": {
+                        "value": "efptestsku2"
+                      },
+                      "quantity": {
+                      "value": 15
+                    }
+                  }
+                },
+                "response": {
+                  "sellableQuantity": 15,
+                  "reservedQuantity": 0,
+                  "marketplaceChannelInventories": [
+                    {
+                      "sellableQuantity": 13,
+                      "bufferedQuantity": 2,
+                      "marketplaceAttributes": {
+                        "marketplaceName": "AMAZON_IN",
+                        "channelName": "FBA"
+                      }
+                    }
+                  ]
+                }
+                }
+              ]
+            },
+            "examples": {
+              "application/json": {
+                "sellableQuantity": 15,
+                "reservedQuantity": 0,
+                "marketplaceChannelInventories": [
+                  {
+                    "sellableQuantity": 13,
+                    "bufferedQuantity": 2,
+                    "marketplaceAttributes": {
+                      "marketplaceName": "AMAZON_IN",
+                      "channelName": "FBA"
+                    }
+                  }
+                ]
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/InventorySnapshot"
+            }
+          },
+          "400": {
+            "description": "Request has missing or invalid parameters and cannot be parsed.",
+            "headers": {
+              "x-amzn-RateLimit-Limit": {
+                "description": "Your rate limit (requests per second) for this operation.",
+                "type": "string"
+              },
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "x-amzn-api-sandbox": {
+              "static": [
+                {
+                  "request": {
+                    "parameters": {
+                      "locationId": {
+                        "value": "INVALID_NODE"
+                      }
+                    }
+                  },
+                  "response": {
+                    "errors": [
+                      {
+                        "code": "InvalidInput",
+                        "message": "Invalid input 'INVALID_NODE' for parameter 'locationId'"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "InvalidInput",
+                    "message": "Invalid input 'INVALID_NODE' for parameter 'locationId'"
+                  }
+                ]
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "403": {
+            "description": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "404": {
+            "description": "The resource specified does not exist.",
+            "headers": {
+              "x-amzn-RateLimit-Limit": {
+                "description": "Your rate limit (requests per second) for this operation.",
+                "type": "string"
+              },
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "409": {
+            "description": "The resource specified conflicts with the current state",
+            "headers": {
+              "x-amzn-RateLimit-Limit": {
+                "description": "Your rate limit (requests per second) for this operation.\n_Note:_ For this status code, the rate limit header is deprecated and no longer returned.",
+                "type": "string"
+              },
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "412": {
+            "description": "One or more conditions given in the request header fields evaluated to false",
+            "headers": {
+              "x-amzn-RateLimit-Limit": {
+                "description": "Your rate limit (requests per second) for this operation.\n_Note:_ For this status code, the rate limit header is deprecated and no longer returned.",
+                "type": "string"
+              },
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "413": {
+            "description": "The request size exceeded the maximum accepted size.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "415": {
+            "description": "The request payload is in an unsupported format.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "429": {
+            "description": "The frequency of requests was greater than allowed.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "500": {
+            "description": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "503": {
+            "description": "Temporary overloading or maintenance of the server.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "getInventory"
+        ],
+        "description": "Get the current inventory for a given SKU at a given location.",
+        "operationId": "getInventory",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "description": "The node identifier for the seller's location in smart connect for which inventory is being updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "skuId",
+            "in": "path",
+            "description": "The seller's identifier for the SKU for which inventory is being updated",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "headers": {
+              "x-amzn-RateLimit-Limit": {
+                "description": "Your rate limit (requests per second) for this operation.",
+                "type": "string"
+              },
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              },
+              "ETag": {
+                "type": "string",
+                "description": "contains a number which denotes the version of inventory snapshot."
+              },
+              "Last-Modified": {
+                "type": "string",
+                "description": "Notifies the last instance when entity was modified. It should follow data/time format of rfc2616, e.g: Sun, 06 Nov 1994 08:49:37 GMT"
+              }
+            },
+            "x-amzn-api-sandbox": {
+              "static": [
+                {
+                  "request": {
+                    "parameters": {
+                      "locationId": {
+                        "value": "43cd8cd4-a944-4fa8-a584-5e3b3efdb045"
+                      },
+                      "skuId": {
+                        "value": "efptestsku2"
+                      }
+                    }
+                },
+                "response": {
+                  "sellableQuantity": 15,
+                  "reservedQuantity": 0,
+                  "marketplaceChannelInventories": [
+                    {
+                      "sellableQuantity": 13,
+                      "bufferedQuantity": 2,
+                      "marketplaceAttributes": {
+                        "marketplaceName": "AMAZON_IN",
+                        "channelName": "FBA"
+                      }
+                    }
+                  ]
+                }
+                }
+              ]
+            },
+            "examples": {
+              "application/json": {
+                "sellableQuantity": 15,
+                "reservedQuantity": 0,
+                "marketplaceChannelInventories": [
+                  {
+                    "sellableQuantity": 13,
+                    "bufferedQuantity": 2,
+                    "marketplaceAttributes": {
+                      "marketplaceName": "AMAZON_IN",
+                      "channelName": "FBA"
+                    }
+                  }
+                ]
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/InventorySnapshot"
+            }
+          },
+          "400": {
+            "description": "Request has missing or invalid parameters and cannot be parsed.",
+            "headers": {
+              "x-amzn-RateLimit-Limit": {
+                "description": "Your rate limit (requests per second) for this operation.",
+                "type": "string"
+              },
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "x-amzn-api-sandbox": {
+              "static": [
+                {
+                  "request": {
+                    "parameters": {
+                      "locationId": {
+                        "value": "INVALID_NODE"
+                      }
+                    }
+                  },
+                  "response": {
+                    "errors": [
+                      {
+                        "code": "InvalidInput",
+                        "message": "Invalid input 'INVALID_NODE' for parameter 'locationId'"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "InvalidInput",
+                    "message": "Invalid input 'INVALID_NODE' for parameter 'locationId'"
+                  }
+                ]
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "403": {
+            "description": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "404": {
+            "description": "The resource specified does not exist.",
+            "headers": {
+              "x-amzn-RateLimit-Limit": {
+                "description": "Your rate limit (requests per second) for this operation.",
+                "type": "string"
+              },
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "413": {
+            "description": "The request size exceeded the maximum accepted size.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "415": {
+            "description": "The request payload is in an unsupported format.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "429": {
+            "description": "The frequency of requests was greater than allowed.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "500": {
+            "description": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "503": {
+            "description": "Temporary overloading or maintenance of the server.",
+            "headers": {
+              "x-amzn-RequestId": {
+                "type": "string",
+                "description": "Unique request reference ID."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "InventorySnapshot": {
+      "description": "An object containing all details about the inventory picture available with Amazon Yojaka for a particular SKU.",
+      "type": "object",
+      "properties": {
+        "sellableQuantity": {
+          "description": "The number of items of the specified SKU that are available for being purchased.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "reservedQuantity": {
+          "description": "The number of items of the specified SKU that have been reserved for shipment dropped from any marketplace which are yet to be fulfilled.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "marketplaceChannelInventories": {
+          "description": "Provides a break-up of how many items of the specified SKU are available in different channels.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "Details of the inventory of a particular SKU available in a particular channel.",
+            "type": "object",
+            "properties": {
+              "sellableQuantity": {
+                "description": "The number of items of the specified SKU that are available for being purchased.",
+                "type": "integer",
+                "minimum": 0
+              },
+              "bufferedQuantity": {
+                "description": "The number of items of a particular SKU that have been virtually buffered by Amazon Yojaka.",
+                "type": "integer",
+                "minimum": 0
+              },
+              "marketplaceAttributes": {
+                "description": "The details about the marketplace and channel for this inventory applies.",
+                "type": "object",
+                "properties": {
+                  "marketplaceName": {
+                    "description": "The name of the marketplace.",
+                    "type": "string"
+                  },
+                  "channelName": {
+                    "description": "The name of the channel within the marketplace (if applicable).",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "marketplaceName"
+                ]
+              }
+            },
+            "required": [
+              "sellableQuantity",
+              "bufferedQuantity",
+              "marketplaceAttributes"
+            ]
+          }
+        }
+      },
+      "required": [
+        "sellableQuantity",
+        "reservedQuantity",
+        "marketplaceChannelInventories"
+      ]
+    },
+    "ErrorList": {
+      "type": "object",
+      "description": "A list of error responses returned when a request is unsuccessful.",
+      "required": [
+        "errors"
+      ],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "An error code that identifies the type of error that occurred."
+        },
+        "message": {
+          "type": "string",
+          "description": "A message that describes the error condition in a human-readable form."
+        },
+        "details": {
+          "type": "string",
+          "description": "Additional details that can help the caller understand or fix the issue."
+        }
+      },
+      "description": "Error response returned when the request is unsuccessful."
+    }
+  }
+}
+

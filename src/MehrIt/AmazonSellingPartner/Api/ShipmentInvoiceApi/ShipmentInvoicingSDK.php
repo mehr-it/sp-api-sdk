@@ -248,7 +248,7 @@ final class ShipmentInvoicingSDK
      *
      * @param AccessToken $accessToken
      * @param string $region
-     * @param string $shipment_id The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $shipment_id The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
@@ -348,7 +348,7 @@ final class ShipmentInvoicingSDK
      *
      * @param AccessToken $accessToken
      * @param string $region
-     * @param string $shipment_id The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md). (required)
+     * @param string $shipment_id The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface

@@ -89,7 +89,8 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'ioss_number' => 'string',
         'store_chain_store_id' => 'string',
         'deemed_reseller_category' => 'string',
-        'buyer_info' => '\MehrIt\AmazonSellingPartner\Model\Orders\ItemBuyerInfo'
+        'buyer_info' => '\MehrIt\AmazonSellingPartner\Model\Orders\ItemBuyerInfo',
+        'buyer_requested_cancel' => '\MehrIt\AmazonSellingPartner\Model\Orders\BuyerRequestedCancel'
     ];
 
     /**
@@ -132,7 +133,8 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'ioss_number' => null,
         'store_chain_store_id' => null,
         'deemed_reseller_category' => null,
-        'buyer_info' => null
+        'buyer_info' => null,
+        'buyer_requested_cancel' => null
     ];
 
     /**
@@ -194,7 +196,8 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'ioss_number' => 'IossNumber',
         'store_chain_store_id' => 'StoreChainStoreId',
         'deemed_reseller_category' => 'DeemedResellerCategory',
-        'buyer_info' => 'BuyerInfo'
+        'buyer_info' => 'BuyerInfo',
+        'buyer_requested_cancel' => 'BuyerRequestedCancel'
     ];
 
     /**
@@ -235,7 +238,8 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'ioss_number' => 'setIossNumber',
         'store_chain_store_id' => 'setStoreChainStoreId',
         'deemed_reseller_category' => 'setDeemedResellerCategory',
-        'buyer_info' => 'setBuyerInfo'
+        'buyer_info' => 'setBuyerInfo',
+        'buyer_requested_cancel' => 'setBuyerRequestedCancel'
     ];
 
     /**
@@ -276,7 +280,8 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'ioss_number' => 'getIossNumber',
         'store_chain_store_id' => 'getStoreChainStoreId',
         'deemed_reseller_category' => 'getDeemedResellerCategory',
-        'buyer_info' => 'getBuyerInfo'
+        'buyer_info' => 'getBuyerInfo',
+        'buyer_requested_cancel' => 'getBuyerRequestedCancel'
     ];
 
     /**
@@ -384,6 +389,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['store_chain_store_id'] = $data['store_chain_store_id'] ?? null;
         $this->container['deemed_reseller_category'] = $data['deemed_reseller_category'] ?? null;
         $this->container['buyer_info'] = $data['buyer_info'] ?? null;
+        $this->container['buyer_requested_cancel'] = $data['buyer_requested_cancel'] ?? null;
     }
 
     /**
@@ -1226,6 +1232,30 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerInfo($buyer_info) : self
     {
         $this->container['buyer_info'] = $buyer_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_requested_cancel
+     *
+     * @return \MehrIt\AmazonSellingPartner\Model\Orders\BuyerRequestedCancel|null
+     */
+    public function getBuyerRequestedCancel()
+    {
+        return $this->container['buyer_requested_cancel'];
+    }
+
+    /**
+     * Sets buyer_requested_cancel
+     *
+     * @param \MehrIt\AmazonSellingPartner\Model\Orders\BuyerRequestedCancel|null $buyer_requested_cancel buyer_requested_cancel
+     *
+     * @return self
+     */
+    public function setBuyerRequestedCancel($buyer_requested_cancel) : self
+    {
+        $this->container['buyer_requested_cancel'] = $buyer_requested_cancel;
 
         return $this;
     }

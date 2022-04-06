@@ -3,6 +3,18 @@ docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate 
     -c /sp-api/config/generator-aplus.yaml \
     --global-property models,apis,apiDocs=false,modelDocs=false,modelTests=false,apiTests=false,supportingFiles=false \
     -o /sp-api
+    
+docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate \
+    -i /sp-api/swagger-model/externalFulfillmentShipments_2021-01-06_swagger_model.json \
+    -c /sp-api/config/generator-external-fulfillment-shipments.yaml \
+    --global-property models,apis,apiDocs=false,modelDocs=false,modelTests=false,apiTests=false,supportingFiles=false \
+    -o /sp-api
+    
+docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate \
+    -i /sp-api/swagger-model/externalFulfillmentInventory_2021-01-06_swagger_model.json \
+    -c /sp-api/config/generator-external-fulfillment-inventory.yaml \
+    --global-property models,apis,apiDocs=false,modelDocs=false,modelTests=false,apiTests=false,supportingFiles=false \
+    -o /sp-api
 
 docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate \
     -i https://raw.githubusercontent.com/amzn/selling-partner-api-models/main/models/authorization-api-model/authorization.json \

@@ -90,6 +90,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'promise_response_due_date' => 'string',
         'is_estimated_ship_date_set' => 'bool',
         'is_sold_by_ab' => 'bool',
+        'is_iba' => 'bool',
         'default_ship_from_location_address' => '\MehrIt\AmazonSellingPartner\Model\Orders\Address',
         'buyer_invoice_preference' => 'string',
         'buyer_tax_information' => '\MehrIt\AmazonSellingPartner\Model\Orders\BuyerTaxInformation',
@@ -99,7 +100,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_display_name' => 'string',
         'shipping_address' => '\MehrIt\AmazonSellingPartner\Model\Orders\Address',
         'buyer_info' => '\MehrIt\AmazonSellingPartner\Model\Orders\BuyerInfo',
-        'automated_shipping_settings' => '\MehrIt\AmazonSellingPartner\Model\Orders\AutomatedShippingSettings'
+        'automated_shipping_settings' => '\MehrIt\AmazonSellingPartner\Model\Orders\AutomatedShippingSettings',
+        'has_regulated_items' => 'bool'
     ];
 
     /**
@@ -143,6 +145,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'promise_response_due_date' => null,
         'is_estimated_ship_date_set' => null,
         'is_sold_by_ab' => null,
+        'is_iba' => null,
         'default_ship_from_location_address' => null,
         'buyer_invoice_preference' => null,
         'buyer_tax_information' => null,
@@ -152,7 +155,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_display_name' => null,
         'shipping_address' => null,
         'buyer_info' => null,
-        'automated_shipping_settings' => null
+        'automated_shipping_settings' => null,
+        'has_regulated_items' => null
     ];
 
     /**
@@ -215,6 +219,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'promise_response_due_date' => 'PromiseResponseDueDate',
         'is_estimated_ship_date_set' => 'IsEstimatedShipDateSet',
         'is_sold_by_ab' => 'IsSoldByAB',
+        'is_iba' => 'IsIBA',
         'default_ship_from_location_address' => 'DefaultShipFromLocationAddress',
         'buyer_invoice_preference' => 'BuyerInvoicePreference',
         'buyer_tax_information' => 'BuyerTaxInformation',
@@ -224,7 +229,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_display_name' => 'SellerDisplayName',
         'shipping_address' => 'ShippingAddress',
         'buyer_info' => 'BuyerInfo',
-        'automated_shipping_settings' => 'AutomatedShippingSettings'
+        'automated_shipping_settings' => 'AutomatedShippingSettings',
+        'has_regulated_items' => 'HasRegulatedItems'
     ];
 
     /**
@@ -266,6 +272,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'promise_response_due_date' => 'setPromiseResponseDueDate',
         'is_estimated_ship_date_set' => 'setIsEstimatedShipDateSet',
         'is_sold_by_ab' => 'setIsSoldByAb',
+        'is_iba' => 'setIsIba',
         'default_ship_from_location_address' => 'setDefaultShipFromLocationAddress',
         'buyer_invoice_preference' => 'setBuyerInvoicePreference',
         'buyer_tax_information' => 'setBuyerTaxInformation',
@@ -275,7 +282,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_display_name' => 'setSellerDisplayName',
         'shipping_address' => 'setShippingAddress',
         'buyer_info' => 'setBuyerInfo',
-        'automated_shipping_settings' => 'setAutomatedShippingSettings'
+        'automated_shipping_settings' => 'setAutomatedShippingSettings',
+        'has_regulated_items' => 'setHasRegulatedItems'
     ];
 
     /**
@@ -317,6 +325,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'promise_response_due_date' => 'getPromiseResponseDueDate',
         'is_estimated_ship_date_set' => 'getIsEstimatedShipDateSet',
         'is_sold_by_ab' => 'getIsSoldByAb',
+        'is_iba' => 'getIsIba',
         'default_ship_from_location_address' => 'getDefaultShipFromLocationAddress',
         'buyer_invoice_preference' => 'getBuyerInvoicePreference',
         'buyer_tax_information' => 'getBuyerTaxInformation',
@@ -326,7 +335,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_display_name' => 'getSellerDisplayName',
         'shipping_address' => 'getShippingAddress',
         'buyer_info' => 'getBuyerInfo',
-        'automated_shipping_settings' => 'getAutomatedShippingSettings'
+        'automated_shipping_settings' => 'getAutomatedShippingSettings',
+        'has_regulated_items' => 'getHasRegulatedItems'
     ];
 
     /**
@@ -514,6 +524,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['promise_response_due_date'] = $data['promise_response_due_date'] ?? null;
         $this->container['is_estimated_ship_date_set'] = $data['is_estimated_ship_date_set'] ?? null;
         $this->container['is_sold_by_ab'] = $data['is_sold_by_ab'] ?? null;
+        $this->container['is_iba'] = $data['is_iba'] ?? null;
         $this->container['default_ship_from_location_address'] = $data['default_ship_from_location_address'] ?? null;
         $this->container['buyer_invoice_preference'] = $data['buyer_invoice_preference'] ?? null;
         $this->container['buyer_tax_information'] = $data['buyer_tax_information'] ?? null;
@@ -524,6 +535,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['shipping_address'] = $data['shipping_address'] ?? null;
         $this->container['buyer_info'] = $data['buyer_info'] ?? null;
         $this->container['automated_shipping_settings'] = $data['automated_shipping_settings'] ?? null;
+        $this->container['has_regulated_items'] = $data['has_regulated_items'] ?? null;
     }
 
     /**
@@ -1440,6 +1452,30 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets is_iba
+     *
+     * @return bool|null
+     */
+    public function getIsIba()
+    {
+        return $this->container['is_iba'];
+    }
+
+    /**
+     * Sets is_iba
+     *
+     * @param bool|null $is_iba When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.
+     *
+     * @return self
+     */
+    public function setIsIba($is_iba) : self
+    {
+        $this->container['is_iba'] = $is_iba;
+
+        return $this;
+    }
+
+    /**
      * Gets default_ship_from_location_address
      *
      * @return \MehrIt\AmazonSellingPartner\Model\Orders\Address|null
@@ -1476,7 +1512,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer_invoice_preference
      *
-     * @param string|null $buyer_invoice_preference The buyer’s invoicing preference.
+     * @param string|null $buyer_invoice_preference The buyer's invoicing preference. Available only in the TR marketplace.
      *
      * @return self
      */
@@ -1685,6 +1721,30 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAutomatedShippingSettings($automated_shipping_settings) : self
     {
         $this->container['automated_shipping_settings'] = $automated_shipping_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_regulated_items
+     *
+     * @return bool|null
+     */
+    public function getHasRegulatedItems()
+    {
+        return $this->container['has_regulated_items'];
+    }
+
+    /**
+     * Sets has_regulated_items
+     *
+     * @param bool|null $has_regulated_items Whether the order contains regulated items which may require additional approval steps before being fulfilled.
+     *
+     * @return self
+     */
+    public function setHasRegulatedItems($has_regulated_items) : self
+    {
+        $this->container['has_regulated_items'] = $has_regulated_items;
 
         return $this;
     }
