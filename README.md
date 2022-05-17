@@ -91,6 +91,9 @@ Until old model won't go away, branches 2.x and 3.x should be maintained in para
   * [VendorDirectFulfillmentShippingSDK - Labels](/src/MehrIt/AmazonSellingPartner/Api/VendorShippingLabelsApi/VendorDirectFulfillmentShippingSDK.php)
   * [VendorDirectFulfillmentOrdersSDK](/src/MehrIt/AmazonSellingPartner/Api/VendorOrdersApi/VendorDirectFulfillmentOrdersSDK.php)
   * [VendorDirectFulfillmentPaymentsSDK](/src/MehrIt/AmazonSellingPartner/Api/VendorInvoiceApi/VendorDirectFulfillmentPaymentsSDK.php)
+* ExternalFulfillmentSDK
+  * [ExternalFulfillmentInventorySDK](src/MehrIt/AmazonSellingPartner/Api/UpdateInventoryApi/ExternalFulfillmentInventorySDK.php)
+  * [ExternalFulfillmentShipmentsSDK](src/MehrIt/AmazonSellingPartner/Api/ShipmentRetrievalApi/ExternalFulfillmentShipmentsSDK.php)
     
 ### Authorization
 
