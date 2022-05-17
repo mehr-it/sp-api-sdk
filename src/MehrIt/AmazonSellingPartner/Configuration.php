@@ -27,6 +27,8 @@ final class Configuration
     private LoggerConfiguration $loggerConfiguration;
 
     private Extensions $extensions;
+	
+	private bool $sandbox; 
 
     public function __construct(
         string $lwaClientID,
@@ -35,7 +37,8 @@ final class Configuration
         string $secretKey,
         string $securityToken = null,
         Extensions $extensions = null,
-        LoggerConfiguration $loggerConfiguration = null
+        LoggerConfiguration $loggerConfiguration = null,
+	    bool $sandbox = false
     ) {
         $this->lwaClientID = $lwaClientID;
         $this->lwaClientSecret = $lwaClientSecret;
@@ -47,6 +50,7 @@ final class Configuration
         $this->loggerConfiguration = $loggerConfiguration ? $loggerConfiguration : new LoggerConfiguration();
         $this->extensions = $extensions ? $extensions : new Extensions();
         $this->securityToken = $securityToken;
+		$this->sandbox = $sandbox;
     }
 
     public static function forIAMUser(string $clientId, string $clientSecret, string $accessKey, string $secretKey) : self
@@ -82,11 +86,11 @@ final class Configuration
 
         switch ($awsRegion) {
             case Regions::EUROPE:
-                return Regions::EUROPE_URL;
+                return !$this->sandbox ? Regions::EUROPE_URL : Regions::EUROPE_URL_SANDBOX;
             case Regions::FAR_EAST:
-                return Regions::FAR_EAST_URL;
+                return !$this->sandbox ? Regions::FAR_EAST_URL : Regions::FAR_EAST_URL_SANDBOX;
             case Regions::NORTH_AMERICA:
-                return Regions::NORTH_AMERICA_URL;
+                return !$this->sandbox ? Regions::NORTH_AMERICA_URL : Regions::NORTH_AMERICA_URL_SANDBOX;
 
             default:
                 throw new \RuntimeException('unknown region');
@@ -101,11 +105,11 @@ final class Configuration
 
         switch ($awsRegion) {
             case Regions::EUROPE:
-                return Regions::EUROPE_HOST;
+                return !$this->sandbox ? Regions::EUROPE_HOST : Regions::EUROPE_HOST_SANDBOX;
             case Regions::FAR_EAST:
-                return Regions::FAR_EAST_HOST;
+                return !$this->sandbox ? Regions::FAR_EAST_HOST : Regions::FAR_EAST_HOST_SANDBOX;
             case Regions::NORTH_AMERICA:
-                return Regions::NORTH_AMERICA_HOST;
+                return !$this->sandbox ? Regions::NORTH_AMERICA_HOST : Regions::NORTH_AMERICA_HOST_SANDBOX;
 
             default:
                 throw new \RuntimeException('unknown region');
@@ -125,6 +129,11 @@ final class Configuration
     public function userAgent() : string
     {
         return $this->userAgent;
+    }
+	
+	public function sandbox() : bool
+    {
+        return $this->sandbox;
     }
 
     public function setUserAgent(string $userAgent) : self
