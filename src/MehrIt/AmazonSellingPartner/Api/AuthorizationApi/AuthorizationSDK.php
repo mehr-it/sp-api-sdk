@@ -141,7 +141,7 @@ final class AuthorizationSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Authorization\GetAuthorizationCodeResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Authorization\GetAuthorizationCodeResponse',
             []
         );
     }

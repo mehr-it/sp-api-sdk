@@ -187,7 +187,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\ConfirmPreorderResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\ConfirmPreorderResponse',
             []
         );
     }
@@ -416,7 +416,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\ConfirmTransportResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\ConfirmTransportResponse',
             []
         );
     }
@@ -612,7 +612,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\InboundShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\InboundShipmentResponse',
             []
         );
     }
@@ -822,7 +822,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanResponse',
             []
         );
     }
@@ -1017,7 +1017,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\EstimateTransportResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\EstimateTransportResponse',
             []
         );
     }
@@ -1212,7 +1212,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetBillOfLadingResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetBillOfLadingResponse',
             []
         );
     }
@@ -1409,7 +1409,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetInboundGuidanceResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetInboundGuidanceResponse',
             []
         );
     }
@@ -1643,7 +1643,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetLabelsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetLabelsResponse',
             []
         );
     }
@@ -1932,7 +1932,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetPreorderInfoResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetPreorderInfoResponse',
             []
         );
     }
@@ -2146,7 +2146,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetPrepInstructionsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetPrepInstructionsResponse',
             []
         );
     }
@@ -2377,7 +2377,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse',
             []
         );
     }
@@ -2625,7 +2625,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse',
             []
         );
     }
@@ -2843,7 +2843,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentsResponse',
             []
         );
     }
@@ -3112,7 +3112,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetTransportDetailsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetTransportDetailsResponse',
             []
         );
     }
@@ -3308,7 +3308,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\PutTransportDetailsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\PutTransportDetailsResponse',
             []
         );
     }
@@ -3519,7 +3519,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\InboundShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\InboundShipmentResponse',
             []
         );
     }
@@ -3729,7 +3729,7 @@ final class FulfillmentInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\VoidTransportResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\VoidTransportResponse',
             []
         );
     }

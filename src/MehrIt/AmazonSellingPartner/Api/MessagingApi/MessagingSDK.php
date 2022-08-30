@@ -175,7 +175,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateConfirmCustomizationDetailsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateConfirmCustomizationDetailsResponse',
             []
         );
     }
@@ -408,7 +408,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateAmazonMotorsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateAmazonMotorsResponse',
             []
         );
     }
@@ -641,7 +641,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateConfirmDeliveryDetailsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateConfirmDeliveryDetailsResponse',
             []
         );
     }
@@ -874,7 +874,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateConfirmOrderDetailsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateConfirmOrderDetailsResponse',
             []
         );
     }
@@ -1107,7 +1107,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateConfirmServiceDetailsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateConfirmServiceDetailsResponse',
             []
         );
     }
@@ -1340,7 +1340,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateDigitalAccessKeyResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateDigitalAccessKeyResponse',
             []
         );
     }
@@ -1573,7 +1573,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateLegalDisclosureResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateLegalDisclosureResponse',
             []
         );
     }
@@ -1805,7 +1805,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateNegativeFeedbackRemovalResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateNegativeFeedbackRemovalResponse',
             []
         );
     }
@@ -2023,7 +2023,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateUnexpectedProblemResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateUnexpectedProblemResponse',
             []
         );
     }
@@ -2256,7 +2256,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\CreateWarrantyResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\CreateWarrantyResponse',
             []
         );
     }
@@ -2488,7 +2488,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\GetAttributesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\GetAttributesResponse',
             []
         );
     }
@@ -2705,7 +2705,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\GetMessagingActionsForOrderResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\GetMessagingActionsForOrderResponse',
             []
         );
     }
@@ -2923,7 +2923,7 @@ final class MessagingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Messaging\InvoiceResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Messaging\InvoiceResponse',
             []
         );
     }

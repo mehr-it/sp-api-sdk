@@ -361,7 +361,7 @@ final class FBASmallAndLightSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEligibility::class,
+            '\MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEligibility',
             []
         );
     }
@@ -578,7 +578,7 @@ final class FBASmallAndLightSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollment::class,
+            '\MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollment',
             []
         );
     }
@@ -794,7 +794,7 @@ final class FBASmallAndLightSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightFeePreviews::class,
+            '\MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightFeePreviews',
             []
         );
     }
@@ -990,7 +990,7 @@ final class FBASmallAndLightSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollment::class,
+            '\MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollment',
             []
         );
     }

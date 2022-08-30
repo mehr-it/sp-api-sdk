@@ -146,7 +146,7 @@ final class ProductTypesDefinitionsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductTypesDefinitions\ProductTypeDefinition::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductTypesDefinitions\ProductTypeDefinition',
             []
         );
     }
@@ -414,7 +414,7 @@ final class ProductTypesDefinitionsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductTypesDefinitions\ProductTypeList::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductTypesDefinitions\ProductTypeList',
             []
         );
     }

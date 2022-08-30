@@ -143,7 +143,7 @@ final class CatalogItemSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\CatalogItem\Item::class,
+            '\MehrIt\AmazonSellingPartner\Model\CatalogItem\Item',
             []
         );
     }
@@ -385,7 +385,7 @@ final class CatalogItemSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\CatalogItem\ItemSearchResults::class,
+            '\MehrIt\AmazonSellingPartner\Model\CatalogItem\ItemSearchResults',
             []
         );
     }

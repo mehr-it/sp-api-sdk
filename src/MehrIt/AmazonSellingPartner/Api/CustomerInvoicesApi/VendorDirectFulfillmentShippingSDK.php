@@ -140,7 +140,7 @@ final class VendorDirectFulfillmentShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetCustomerInvoiceResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetCustomerInvoiceResponse',
             []
         );
     }
@@ -344,7 +344,7 @@ final class VendorDirectFulfillmentShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetCustomerInvoicesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetCustomerInvoicesResponse',
             []
         );
     }

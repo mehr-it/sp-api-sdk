@@ -143,7 +143,7 @@ final class VendorDirectFulfillmentOrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\GetOrderResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\GetOrderResponse',
             []
         );
     }
@@ -345,7 +345,7 @@ final class VendorDirectFulfillmentOrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\GetOrdersResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\GetOrdersResponse',
             []
         );
     }
@@ -632,7 +632,7 @@ final class VendorDirectFulfillmentOrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\SubmitAcknowledgementResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\SubmitAcknowledgementResponse',
             []
         );
     }

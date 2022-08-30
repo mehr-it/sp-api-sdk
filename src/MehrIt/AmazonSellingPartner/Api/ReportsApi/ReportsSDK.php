@@ -539,7 +539,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\CreateReportResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Reports\CreateReportResponse',
             []
         );
     }
@@ -734,7 +734,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\CreateReportScheduleResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Reports\CreateReportScheduleResponse',
             []
         );
     }
@@ -929,7 +929,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\Report::class,
+            '\MehrIt\AmazonSellingPartner\Model\Reports\Report',
             []
         );
     }
@@ -1124,7 +1124,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\ReportDocument::class,
+            '\MehrIt\AmazonSellingPartner\Model\Reports\ReportDocument',
             []
         );
     }
@@ -1319,7 +1319,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\ReportSchedule::class,
+            '\MehrIt\AmazonSellingPartner\Model\Reports\ReportSchedule',
             []
         );
     }
@@ -1514,7 +1514,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\ReportScheduleList::class,
+            '\MehrIt\AmazonSellingPartner\Model\Reports\ReportScheduleList',
             []
         );
     }
@@ -1724,7 +1724,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\GetReportsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Reports\GetReportsResponse',
             []
         );
     }

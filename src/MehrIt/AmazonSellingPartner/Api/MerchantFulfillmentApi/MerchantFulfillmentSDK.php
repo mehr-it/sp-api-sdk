@@ -158,7 +158,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CancelShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CancelShipmentResponse',
             []
         );
     }
@@ -357,7 +357,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CancelShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CancelShipmentResponse',
             []
         );
     }
@@ -556,7 +556,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CreateShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CreateShipmentResponse',
             []
         );
     }
@@ -751,7 +751,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse',
             []
         );
     }
@@ -946,7 +946,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse',
             []
         );
     }
@@ -1141,7 +1141,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse',
             []
         );
     }
@@ -1336,7 +1336,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse',
             []
         );
     }
@@ -1531,7 +1531,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetShipmentResponse',
             []
         );
     }

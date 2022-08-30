@@ -137,7 +137,7 @@ final class VendorShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorShipments\SubmitShipmentConfirmationsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorShipments\SubmitShipmentConfirmationsResponse',
             []
         );
     }

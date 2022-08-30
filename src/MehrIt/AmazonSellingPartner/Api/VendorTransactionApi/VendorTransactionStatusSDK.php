@@ -137,7 +137,7 @@ final class VendorTransactionStatusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorTransactionStatus\GetTransactionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorTransactionStatus\GetTransactionResponse',
             []
         );
     }

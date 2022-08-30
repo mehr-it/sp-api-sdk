@@ -136,7 +136,7 @@ final class SellersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Sellers\GetMarketplaceParticipationsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Sellers\GetMarketplaceParticipationsResponse',
             []
         );
     }

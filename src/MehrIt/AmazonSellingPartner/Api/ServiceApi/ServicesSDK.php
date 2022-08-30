@@ -186,7 +186,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentResponse',
             []
         );
     }
@@ -405,7 +405,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\AssignAppointmentResourcesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\AssignAppointmentResourcesResponse',
             []
         );
     }
@@ -645,7 +645,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\CancelReservationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\CancelReservationResponse',
             []
         );
     }
@@ -869,7 +869,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\CancelServiceJobByServiceJobIdResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\CancelServiceJobByServiceJobIdResponse',
             []
         );
     }
@@ -1098,7 +1098,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\CompleteServiceJobByServiceJobIdResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\CompleteServiceJobByServiceJobIdResponse',
             []
         );
     }
@@ -1301,7 +1301,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\CreateReservationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\CreateReservationResponse',
             []
         );
     }
@@ -1517,7 +1517,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\CreateServiceDocumentUploadDestination::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\CreateServiceDocumentUploadDestination',
             []
         );
     }
@@ -1716,7 +1716,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\GetAppointmentSlotsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\GetAppointmentSlotsResponse',
             []
         );
     }
@@ -1983,7 +1983,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\GetAppointmentSlotsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\GetAppointmentSlotsResponse',
             []
         );
     }
@@ -2231,7 +2231,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\FixedSlotCapacity::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\FixedSlotCapacity',
             []
         );
     }
@@ -2483,7 +2483,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\RangeSlotCapacity::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\RangeSlotCapacity',
             []
         );
     }
@@ -2732,7 +2732,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\GetServiceJobByServiceJobIdResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\GetServiceJobByServiceJobIdResponse',
             []
         );
     }
@@ -2949,7 +2949,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\GetServiceJobsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\GetServiceJobsResponse',
             []
         );
     }
@@ -3352,7 +3352,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentResponse',
             []
         );
     }
@@ -3593,7 +3593,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            string::class,
+            'string',
             []
         );
     }
@@ -3834,7 +3834,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\UpdateReservationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\UpdateReservationResponse',
             []
         );
     }
@@ -4074,7 +4074,7 @@ final class ServicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Services\UpdateScheduleResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Services\UpdateScheduleResponse',
             []
         );
     }

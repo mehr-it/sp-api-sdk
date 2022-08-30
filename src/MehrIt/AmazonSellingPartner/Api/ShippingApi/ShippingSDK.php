@@ -161,7 +161,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\CancelShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\CancelShipmentResponse',
             []
         );
     }
@@ -356,7 +356,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\CreateShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\CreateShipmentResponse',
             []
         );
     }
@@ -550,7 +550,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\GetAccountResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\GetAccountResponse',
             []
         );
     }
@@ -730,7 +730,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\GetRatesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\GetRatesResponse',
             []
         );
     }
@@ -925,7 +925,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\GetShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\GetShipmentResponse',
             []
         );
     }
@@ -1120,7 +1120,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\GetTrackingInformationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\GetTrackingInformationResponse',
             []
         );
     }
@@ -1316,7 +1316,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\PurchaseLabelsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\PurchaseLabelsResponse',
             []
         );
     }
@@ -1526,7 +1526,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\PurchaseShipmentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\PurchaseShipmentResponse',
             []
         );
     }
@@ -1723,7 +1723,7 @@ final class ShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Shipping\RetrieveShippingLabelResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Shipping\RetrieveShippingLabelResponse',
             []
         );
     }

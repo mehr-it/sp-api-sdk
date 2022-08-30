@@ -165,7 +165,7 @@ final {{#operations}}class {{packageName}}SDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            {{{returnType}}}::class,
+            '{{{returnType}}}',
             []
         );
         {{/returnType}}

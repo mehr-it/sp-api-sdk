@@ -158,7 +158,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Notifications\CreateDestinationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Notifications\CreateDestinationResponse',
             []
         );
     }
@@ -354,7 +354,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Notifications\CreateSubscriptionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Notifications\CreateSubscriptionResponse',
             []
         );
     }
@@ -564,7 +564,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Notifications\DeleteDestinationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Notifications\DeleteDestinationResponse',
             []
         );
     }
@@ -760,7 +760,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Notifications\DeleteSubscriptionByIdResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Notifications\DeleteSubscriptionByIdResponse',
             []
         );
     }
@@ -970,7 +970,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Notifications\GetDestinationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Notifications\GetDestinationResponse',
             []
         );
     }
@@ -1164,7 +1164,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Notifications\GetDestinationsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Notifications\GetDestinationsResponse',
             []
         );
     }
@@ -1344,7 +1344,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Notifications\GetSubscriptionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Notifications\GetSubscriptionResponse',
             []
         );
     }
@@ -1540,7 +1540,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Notifications\GetSubscriptionByIdResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Notifications\GetSubscriptionByIdResponse',
             []
         );
     }

@@ -141,7 +141,7 @@ final class SolicitationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Solicitations\CreateProductReviewAndSellerFeedbackSolicitationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Solicitations\CreateProductReviewAndSellerFeedbackSolicitationResponse',
             []
         );
     }
@@ -358,7 +358,7 @@ final class SolicitationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Solicitations\GetSolicitationActionsForOrderResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Solicitations\GetSolicitationActionsForOrderResponse',
             []
         );
     }

@@ -139,7 +139,7 @@ final class FBAInboundSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FBAInbound\GetItemEligibilityPreviewResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FBAInbound\GetItemEligibilityPreviewResponse',
             []
         );
     }

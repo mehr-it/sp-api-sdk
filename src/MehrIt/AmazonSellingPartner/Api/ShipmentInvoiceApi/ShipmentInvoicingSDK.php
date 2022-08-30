@@ -143,7 +143,7 @@ final class ShipmentInvoicingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\GetInvoiceStatusResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\GetInvoiceStatusResponse',
             []
         );
     }
@@ -338,7 +338,7 @@ final class ShipmentInvoicingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\GetShipmentDetailsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\GetShipmentDetailsResponse',
             []
         );
     }
@@ -534,7 +534,7 @@ final class ShipmentInvoicingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\SubmitInvoiceResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\SubmitInvoiceResponse',
             []
         );
     }

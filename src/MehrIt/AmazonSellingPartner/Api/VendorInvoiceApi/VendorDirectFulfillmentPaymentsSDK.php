@@ -137,7 +137,7 @@ final class VendorDirectFulfillmentPaymentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentPayments\SubmitInvoiceResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentPayments\SubmitInvoiceResponse',
             []
         );
     }

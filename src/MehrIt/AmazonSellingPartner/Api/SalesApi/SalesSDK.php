@@ -145,7 +145,7 @@ final class SalesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Sales\GetOrderMetricsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Sales\GetOrderMetricsResponse',
             []
         );
     }

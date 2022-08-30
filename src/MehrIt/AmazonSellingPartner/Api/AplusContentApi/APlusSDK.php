@@ -165,7 +165,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentResponse',
             []
         );
     }
@@ -383,7 +383,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\GetContentDocumentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\GetContentDocumentResponse',
             []
         );
     }
@@ -628,7 +628,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\ListContentDocumentAsinRelationsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\ListContentDocumentAsinRelationsResponse',
             []
         );
     }
@@ -891,7 +891,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentApprovalSubmissionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentApprovalSubmissionResponse',
             []
         );
     }
@@ -1113,7 +1113,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentAsinRelationsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentAsinRelationsResponse',
             []
         );
     }
@@ -1349,7 +1349,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentSuspendSubmissionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentSuspendSubmissionResponse',
             []
         );
     }
@@ -1570,7 +1570,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\SearchContentDocumentsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\SearchContentDocumentsResponse',
             []
         );
     }
@@ -1788,7 +1788,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\SearchContentPublishRecordsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\SearchContentPublishRecordsResponse',
             []
         );
     }
@@ -2027,7 +2027,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentResponse',
             []
         );
     }
@@ -2264,7 +2264,7 @@ final class APlusSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\APlus\ValidateContentDocumentAsinRelationsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\APlus\ValidateContentDocumentAsinRelationsResponse',
             []
         );
     }

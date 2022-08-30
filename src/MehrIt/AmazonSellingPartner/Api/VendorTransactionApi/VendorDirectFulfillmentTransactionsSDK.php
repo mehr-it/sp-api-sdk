@@ -137,7 +137,7 @@ final class VendorDirectFulfillmentTransactionsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentTransactions\GetTransactionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentTransactions\GetTransactionResponse',
             []
         );
     }

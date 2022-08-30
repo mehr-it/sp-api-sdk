@@ -156,7 +156,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetPricingResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductPricing\GetPricingResponse',
             []
         );
     }
@@ -414,7 +414,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetOffersResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductPricing\GetOffersResponse',
             []
         );
     }
@@ -654,7 +654,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetItemOffersBatchResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductPricing\GetItemOffersBatchResponse',
             []
         );
     }
@@ -852,7 +852,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetOffersResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductPricing\GetOffersResponse',
             []
         );
     }
@@ -1092,7 +1092,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetListingOffersBatchResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductPricing\GetListingOffersBatchResponse',
             []
         );
     }
@@ -1292,7 +1292,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetPricingResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductPricing\GetPricingResponse',
             []
         );
     }

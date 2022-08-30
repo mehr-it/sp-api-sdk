@@ -138,7 +138,7 @@ final class ExternalFulfillmentInventorySDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentInventory\InventorySnapshot::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentInventory\InventorySnapshot',
             []
         );
     }

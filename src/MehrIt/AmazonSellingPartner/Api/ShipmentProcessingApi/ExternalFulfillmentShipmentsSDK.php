@@ -162,7 +162,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList',
             []
         );
     }
@@ -373,7 +373,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\InvoiceResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\InvoiceResponse',
             []
         );
     }
@@ -587,7 +587,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipLabelResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipLabelResponse',
             []
         );
     }
@@ -836,7 +836,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList',
             []
         );
     }
@@ -1064,7 +1064,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\InvoiceResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\InvoiceResponse',
             []
         );
     }
@@ -1275,7 +1275,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipLabelResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipLabelResponse',
             []
         );
     }
@@ -1486,7 +1486,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShippingOptionsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShippingOptionsResponse',
             []
         );
     }
@@ -1702,7 +1702,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList',
             []
         );
     }
@@ -1929,7 +1929,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList',
             []
         );
     }

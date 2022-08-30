@@ -144,7 +144,7 @@ final class ProductFeesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductFees\GetMyFeesEstimateResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductFees\GetMyFeesEstimateResponse',
             []
         );
     }
@@ -355,7 +355,7 @@ final class ProductFeesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductFees\GetMyFeesEstimateResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductFees\GetMyFeesEstimateResponse',
             []
         );
     }
@@ -565,7 +565,7 @@ final class ProductFeesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ProductFees\FeesEstimateResult[]::class,
+            '\MehrIt\AmazonSellingPartner\Model\ProductFees\FeesEstimateResult[]',
             []
         );
     }

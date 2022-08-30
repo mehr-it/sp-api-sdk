@@ -140,7 +140,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\Shipment::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\Shipment',
             []
         );
     }
@@ -340,7 +340,7 @@ final class ExternalFulfillmentShipmentsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipmentsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipmentsResponse',
             []
         );
     }

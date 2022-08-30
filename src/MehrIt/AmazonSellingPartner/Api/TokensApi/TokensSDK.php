@@ -137,7 +137,7 @@ final class TokensSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Tokens\CreateRestrictedDataTokenResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Tokens\CreateRestrictedDataTokenResponse',
             []
         );
     }

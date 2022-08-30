@@ -149,7 +149,7 @@ final class ListingsItemsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse',
             []
         );
     }
@@ -391,7 +391,7 @@ final class ListingsItemsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ListingsItems\Item::class,
+            '\MehrIt\AmazonSellingPartner\Model\ListingsItems\Item',
             []
         );
     }
@@ -644,7 +644,7 @@ final class ListingsItemsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse',
             []
         );
     }
@@ -901,7 +901,7 @@ final class ListingsItemsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse',
             []
         );
     }

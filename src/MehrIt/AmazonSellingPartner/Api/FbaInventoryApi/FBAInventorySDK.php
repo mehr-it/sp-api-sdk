@@ -143,7 +143,7 @@ final class FBAInventorySDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\FBAInventory\GetInventorySummariesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\FBAInventory\GetInventorySummariesResponse',
             []
         );
     }

@@ -146,7 +146,7 @@ final class VendorDirectFulfillmentShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetPackingSlipResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetPackingSlipResponse',
             []
         );
     }
@@ -350,7 +350,7 @@ final class VendorDirectFulfillmentShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetPackingSlipListResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetPackingSlipListResponse',
             []
         );
     }
@@ -615,7 +615,7 @@ final class VendorDirectFulfillmentShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShipmentConfirmationsResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShipmentConfirmationsResponse',
             []
         );
     }
@@ -810,7 +810,7 @@ final class VendorDirectFulfillmentShippingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShipmentStatusUpdatesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShipmentStatusUpdatesResponse',
             []
         );
     }

@@ -140,7 +140,7 @@ final class UploadsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Uploads\CreateUploadDestinationResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\Uploads\CreateUploadDestinationResponse',
             []
         );
     }

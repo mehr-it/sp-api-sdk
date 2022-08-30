@@ -137,7 +137,7 @@ final class VendorInvoicesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\VendorInvoices\SubmitInvoicesResponse::class,
+            '\MehrIt\AmazonSellingPartner\Model\VendorInvoices\SubmitInvoicesResponse',
             []
         );
     }
