@@ -257,7 +257,7 @@ final class FeedsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Feeds\CreateFeedResponse
      */
-    public function createFeed(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Feeds\CreateFeedResponse
+    public function createFeed(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createFeedRequest($accessToken, $region, $body);
 
@@ -452,7 +452,7 @@ final class FeedsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Feeds\CreateFeedDocumentResponse
      */
-    public function createFeedDocument(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Feeds\CreateFeedDocumentResponse
+    public function createFeedDocument(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createFeedDocumentRequest($accessToken, $region, $body);
 
@@ -647,7 +647,7 @@ final class FeedsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Feeds\Feed
      */
-    public function getFeed(AccessToken $accessToken, string $region, $feed_id): \MehrIt\AmazonSellingPartner\Model\Feeds\Feed
+    public function getFeed(AccessToken $accessToken, string $region, $feed_id)
     {
         $request = $this->getFeedRequest($accessToken, $region, $feed_id);
 
@@ -842,7 +842,7 @@ final class FeedsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Feeds\FeedDocument
      */
-    public function getFeedDocument(AccessToken $accessToken, string $region, $feed_document_id): \MehrIt\AmazonSellingPartner\Model\Feeds\FeedDocument
+    public function getFeedDocument(AccessToken $accessToken, string $region, $feed_document_id)
     {
         $request = $this->getFeedDocumentRequest($accessToken, $region, $feed_document_id);
 
@@ -1043,7 +1043,7 @@ final class FeedsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Feeds\GetFeedsResponse
      */
-    public function getFeeds(AccessToken $accessToken, string $region, $feed_types = null, $marketplace_ids = null, $page_size = 10, $processing_statuses = null, $created_since = null, $created_until = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\Feeds\GetFeedsResponse
+    public function getFeeds(AccessToken $accessToken, string $region, $feed_types = null, $marketplace_ids = null, $page_size = 10, $processing_statuses = null, $created_since = null, $created_until = null, $next_token = null)
     {
         $request = $this->getFeedsRequest($accessToken, $region, $feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
 

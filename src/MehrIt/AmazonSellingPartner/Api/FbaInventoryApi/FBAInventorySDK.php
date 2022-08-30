@@ -59,7 +59,7 @@ final class FBAInventorySDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FBAInventory\GetInventorySummariesResponse
      */
-    public function getInventorySummaries(AccessToken $accessToken, string $region, $granularity_type, $granularity_id, $marketplace_ids, $details = false, $start_date_time = null, $seller_skus = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\FBAInventory\GetInventorySummariesResponse
+    public function getInventorySummaries(AccessToken $accessToken, string $region, $granularity_type, $granularity_id, $marketplace_ids, $details = false, $start_date_time = null, $seller_skus = null, $next_token = null)
     {
         $request = $this->getInventorySummariesRequest($accessToken, $region, $granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $next_token);
 

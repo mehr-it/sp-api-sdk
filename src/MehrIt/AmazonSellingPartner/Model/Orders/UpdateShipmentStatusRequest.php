@@ -234,7 +234,7 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets marketplace_id
      *
-     * @param string $marketplace_id the unobfuscated marketplace ID
+     * @param string $marketplace_id The unobfuscated marketplace identifier.
      *
      * @return self
      */
@@ -282,7 +282,7 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets order_items
      *
-     * @param object[]|null $order_items the list of order items and quantities when the seller wants to partially update the shipment status of the order
+     * @param object[]|null $order_items For partial shipment status updates, the list of order items and quantities to be updated.
      *
      * @return self
      */

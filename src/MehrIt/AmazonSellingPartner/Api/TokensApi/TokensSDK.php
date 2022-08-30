@@ -53,7 +53,7 @@ final class TokensSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Tokens\CreateRestrictedDataTokenResponse
      */
-    public function createRestrictedDataToken(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Tokens\CreateRestrictedDataTokenResponse
+    public function createRestrictedDataToken(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createRestrictedDataTokenRequest($accessToken, $region, $body);
 

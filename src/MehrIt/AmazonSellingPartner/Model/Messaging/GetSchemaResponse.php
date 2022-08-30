@@ -58,7 +58,7 @@ class GetSchemaResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPITypes = [
         '_links' => '\MehrIt\AmazonSellingPartner\Model\Messaging\GetSchemaResponseLinks',
-        'payload' => 'object',
+        'payload' => 'array<string,object>',
         'errors' => '\MehrIt\AmazonSellingPartner\Model\Messaging\Error[]'
     ];
 
@@ -242,7 +242,7 @@ class GetSchemaResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets payload
      *
-     * @return object|null
+     * @return array<string,object>|null
      */
     public function getPayload()
     {
@@ -252,7 +252,7 @@ class GetSchemaResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets payload
      *
-     * @param object|null $payload A JSON schema document describing the expected payload of the action. This object can be validated against <a href=http://json-schema.org/draft-04/schema>http://json-schema.org/draft-04/schema</a>.
+     * @param array<string,object>|null $payload A JSON schema document describing the expected payload of the action. This object can be validated against <a href=http://json-schema.org/draft-04/schema>http://json-schema.org/draft-04/schema</a>.
      *
      * @return self
      */

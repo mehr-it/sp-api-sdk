@@ -74,7 +74,7 @@ final class MerchantFulfillmentSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CancelShipmentResponse
      */
-    public function cancelShipment(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CancelShipmentResponse
+    public function cancelShipment(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->cancelShipmentRequest($accessToken, $region, $shipment_id);
 
@@ -273,7 +273,7 @@ final class MerchantFulfillmentSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CancelShipmentResponse
      */
-    public function cancelShipmentOld(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CancelShipmentResponse
+    public function cancelShipmentOld(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->cancelShipmentOldRequest($accessToken, $region, $shipment_id);
 
@@ -472,7 +472,7 @@ final class MerchantFulfillmentSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CreateShipmentResponse
      */
-    public function createShipment(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\CreateShipmentResponse
+    public function createShipment(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createShipmentRequest($accessToken, $region, $body);
 
@@ -667,7 +667,7 @@ final class MerchantFulfillmentSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse
      */
-    public function getAdditionalSellerInputs(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse
+    public function getAdditionalSellerInputs(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->getAdditionalSellerInputsRequest($accessToken, $region, $body);
 
@@ -862,7 +862,7 @@ final class MerchantFulfillmentSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse
      */
-    public function getAdditionalSellerInputsOld(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse
+    public function getAdditionalSellerInputsOld(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->getAdditionalSellerInputsOldRequest($accessToken, $region, $body);
 
@@ -1057,7 +1057,7 @@ final class MerchantFulfillmentSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse
      */
-    public function getEligibleShipmentServices(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse
+    public function getEligibleShipmentServices(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->getEligibleShipmentServicesRequest($accessToken, $region, $body);
 
@@ -1252,7 +1252,7 @@ final class MerchantFulfillmentSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse
      */
-    public function getEligibleShipmentServicesOld(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse
+    public function getEligibleShipmentServicesOld(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->getEligibleShipmentServicesOldRequest($accessToken, $region, $body);
 
@@ -1447,7 +1447,7 @@ final class MerchantFulfillmentSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetShipmentResponse
      */
-    public function getShipment(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\MerchantFulfillment\GetShipmentResponse
+    public function getShipment(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->getShipmentRequest($accessToken, $region, $shipment_id);
 

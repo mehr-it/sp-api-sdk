@@ -74,7 +74,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_method_details' => 'string[]',
         'marketplace_id' => 'string',
         'shipment_service_level_category' => 'string',
-        'easy_ship_shipment_status' => 'string',
+        'easy_ship_shipment_status' => '\MehrIt\AmazonSellingPartner\Model\Orders\EasyShipShipmentStatus',
         'cba_displayable_shipping_label' => 'string',
         'order_type' => 'string',
         'earliest_ship_date' => 'string',
@@ -96,12 +96,14 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'buyer_tax_information' => '\MehrIt\AmazonSellingPartner\Model\Orders\BuyerTaxInformation',
         'fulfillment_instruction' => '\MehrIt\AmazonSellingPartner\Model\Orders\FulfillmentInstruction',
         'is_ispu' => 'bool',
+        'is_access_point_order' => 'bool',
         'marketplace_tax_info' => '\MehrIt\AmazonSellingPartner\Model\Orders\MarketplaceTaxInfo',
         'seller_display_name' => 'string',
         'shipping_address' => '\MehrIt\AmazonSellingPartner\Model\Orders\Address',
         'buyer_info' => '\MehrIt\AmazonSellingPartner\Model\Orders\BuyerInfo',
         'automated_shipping_settings' => '\MehrIt\AmazonSellingPartner\Model\Orders\AutomatedShippingSettings',
-        'has_regulated_items' => 'bool'
+        'has_regulated_items' => 'bool',
+        'electronic_invoice_status' => '\MehrIt\AmazonSellingPartner\Model\Orders\ElectronicInvoiceStatus'
     ];
 
     /**
@@ -151,12 +153,14 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'buyer_tax_information' => null,
         'fulfillment_instruction' => null,
         'is_ispu' => null,
+        'is_access_point_order' => null,
         'marketplace_tax_info' => null,
         'seller_display_name' => null,
         'shipping_address' => null,
         'buyer_info' => null,
         'automated_shipping_settings' => null,
-        'has_regulated_items' => null
+        'has_regulated_items' => null,
+        'electronic_invoice_status' => null
     ];
 
     /**
@@ -225,12 +229,14 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'buyer_tax_information' => 'BuyerTaxInformation',
         'fulfillment_instruction' => 'FulfillmentInstruction',
         'is_ispu' => 'IsISPU',
+        'is_access_point_order' => 'IsAccessPointOrder',
         'marketplace_tax_info' => 'MarketplaceTaxInfo',
         'seller_display_name' => 'SellerDisplayName',
         'shipping_address' => 'ShippingAddress',
         'buyer_info' => 'BuyerInfo',
         'automated_shipping_settings' => 'AutomatedShippingSettings',
-        'has_regulated_items' => 'HasRegulatedItems'
+        'has_regulated_items' => 'HasRegulatedItems',
+        'electronic_invoice_status' => 'ElectronicInvoiceStatus'
     ];
 
     /**
@@ -278,12 +284,14 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'buyer_tax_information' => 'setBuyerTaxInformation',
         'fulfillment_instruction' => 'setFulfillmentInstruction',
         'is_ispu' => 'setIsIspu',
+        'is_access_point_order' => 'setIsAccessPointOrder',
         'marketplace_tax_info' => 'setMarketplaceTaxInfo',
         'seller_display_name' => 'setSellerDisplayName',
         'shipping_address' => 'setShippingAddress',
         'buyer_info' => 'setBuyerInfo',
         'automated_shipping_settings' => 'setAutomatedShippingSettings',
-        'has_regulated_items' => 'setHasRegulatedItems'
+        'has_regulated_items' => 'setHasRegulatedItems',
+        'electronic_invoice_status' => 'setElectronicInvoiceStatus'
     ];
 
     /**
@@ -331,12 +339,14 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'buyer_tax_information' => 'getBuyerTaxInformation',
         'fulfillment_instruction' => 'getFulfillmentInstruction',
         'is_ispu' => 'getIsIspu',
+        'is_access_point_order' => 'getIsAccessPointOrder',
         'marketplace_tax_info' => 'getMarketplaceTaxInfo',
         'seller_display_name' => 'getSellerDisplayName',
         'shipping_address' => 'getShippingAddress',
         'buyer_info' => 'getBuyerInfo',
         'automated_shipping_settings' => 'getAutomatedShippingSettings',
-        'has_regulated_items' => 'getHasRegulatedItems'
+        'has_regulated_items' => 'getHasRegulatedItems',
+        'electronic_invoice_status' => 'getElectronicInvoiceStatus'
     ];
 
     /**
@@ -530,12 +540,14 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['buyer_tax_information'] = $data['buyer_tax_information'] ?? null;
         $this->container['fulfillment_instruction'] = $data['fulfillment_instruction'] ?? null;
         $this->container['is_ispu'] = $data['is_ispu'] ?? null;
+        $this->container['is_access_point_order'] = $data['is_access_point_order'] ?? null;
         $this->container['marketplace_tax_info'] = $data['marketplace_tax_info'] ?? null;
         $this->container['seller_display_name'] = $data['seller_display_name'] ?? null;
         $this->container['shipping_address'] = $data['shipping_address'] ?? null;
         $this->container['buyer_info'] = $data['buyer_info'] ?? null;
         $this->container['automated_shipping_settings'] = $data['automated_shipping_settings'] ?? null;
         $this->container['has_regulated_items'] = $data['has_regulated_items'] ?? null;
+        $this->container['electronic_invoice_status'] = $data['electronic_invoice_status'] ?? null;
     }
 
     /**
@@ -704,7 +716,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_update_date
      *
-     * @param string $last_update_date The date when the order was last updated.  Note: LastUpdateDate is returned with an incorrect date for orders that were last updated before 2009-04-01.
+     * @param string $last_update_date The date when the order was last updated.  __Note__: LastUpdateDate is returned with an incorrect date for orders that were last updated before 2009-04-01.
      *
      * @return self
      */
@@ -1060,7 +1072,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets easy_ship_shipment_status
      *
-     * @return string|null
+     * @return \MehrIt\AmazonSellingPartner\Model\Orders\EasyShipShipmentStatus|null
      */
     public function getEasyShipShipmentStatus()
     {
@@ -1070,7 +1082,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets easy_ship_shipment_status
      *
-     * @param string|null $easy_ship_shipment_status The status of the Amazon Easy Ship order. This property is included only for Amazon Easy Ship orders.  Possible values: PendingPickUp, LabelCanceled, PickedUp, OutForDelivery, Damaged, Delivered, RejectedByBuyer, Undeliverable, ReturnedToSeller, ReturningToSeller.
+     * @param \MehrIt\AmazonSellingPartner\Model\Orders\EasyShipShipmentStatus|null $easy_ship_shipment_status easy_ship_shipment_status
      *
      * @return self
      */
@@ -1152,7 +1164,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets earliest_ship_date
      *
-     * @param string|null $earliest_ship_date The start of the time period within which you have committed to ship the order. In ISO 8601 date time format. Returned only for seller-fulfilled orders.  Note: EarliestShipDate might not be returned for orders placed before February 1, 2013.
+     * @param string|null $earliest_ship_date The start of the time period within which you have committed to ship the order. In ISO 8601 date time format. Returned only for seller-fulfilled orders.  __Note__: EarliestShipDate might not be returned for orders placed before February 1, 2013.
      *
      * @return self
      */
@@ -1176,7 +1188,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets latest_ship_date
      *
-     * @param string|null $latest_ship_date The end of the time period within which you have committed to ship the order. In ISO 8601 date time format. Returned only for seller-fulfilled orders.  Note: LatestShipDate might not be returned for orders placed before February 1, 2013.
+     * @param string|null $latest_ship_date The end of the time period within which you have committed to ship the order. In ISO 8601 date time format. Returned only for seller-fulfilled orders.  __Note__: LatestShipDate might not be returned for orders placed before February 1, 2013.
      *
      * @return self
      */
@@ -1606,6 +1618,30 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets is_access_point_order
+     *
+     * @return bool|null
+     */
+    public function getIsAccessPointOrder()
+    {
+        return $this->container['is_access_point_order'];
+    }
+
+    /**
+     * Sets is_access_point_order
+     *
+     * @param bool|null $is_access_point_order When true, this order is marked to be delivered to an Access Point. The access location is chosen by the customer. Access Points include Amazon Hub Lockers, Amazon Hub Counters, and pickup points operated by carriers.
+     *
+     * @return self
+     */
+    public function setIsAccessPointOrder($is_access_point_order) : self
+    {
+        $this->container['is_access_point_order'] = $is_access_point_order;
+
+        return $this;
+    }
+
+    /**
      * Gets marketplace_tax_info
      *
      * @return \MehrIt\AmazonSellingPartner\Model\Orders\MarketplaceTaxInfo|null
@@ -1745,6 +1781,30 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHasRegulatedItems($has_regulated_items) : self
     {
         $this->container['has_regulated_items'] = $has_regulated_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets electronic_invoice_status
+     *
+     * @return \MehrIt\AmazonSellingPartner\Model\Orders\ElectronicInvoiceStatus|null
+     */
+    public function getElectronicInvoiceStatus()
+    {
+        return $this->container['electronic_invoice_status'];
+    }
+
+    /**
+     * Sets electronic_invoice_status
+     *
+     * @param \MehrIt\AmazonSellingPartner\Model\Orders\ElectronicInvoiceStatus|null $electronic_invoice_status electronic_invoice_status
+     *
+     * @return self
+     */
+    public function setElectronicInvoiceStatus($electronic_invoice_status) : self
+    {
+        $this->container['electronic_invoice_status'] = $electronic_invoice_status;
 
         return $this;
     }

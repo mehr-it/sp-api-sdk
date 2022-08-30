@@ -52,7 +52,7 @@ final class SellersSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Sellers\GetMarketplaceParticipationsResponse
      */
-    public function getMarketplaceParticipations(AccessToken $accessToken, string $region): \MehrIt\AmazonSellingPartner\Model\Sellers\GetMarketplaceParticipationsResponse
+    public function getMarketplaceParticipations(AccessToken $accessToken, string $region)
     {
         $request = $this->getMarketplaceParticipationsRequest($accessToken, $region);
 

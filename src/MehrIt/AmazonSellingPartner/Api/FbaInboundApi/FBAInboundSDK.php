@@ -55,7 +55,7 @@ final class FBAInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FBAInbound\GetItemEligibilityPreviewResponse
      */
-    public function getItemEligibilityPreview(AccessToken $accessToken, string $region, $asin, $program, $marketplace_ids = null): \MehrIt\AmazonSellingPartner\Model\FBAInbound\GetItemEligibilityPreviewResponse
+    public function getItemEligibilityPreview(AccessToken $accessToken, string $region, $asin, $program, $marketplace_ids = null)
     {
         $request = $this->getItemEligibilityPreviewRequest($accessToken, $region, $asin, $program, $marketplace_ids);
 

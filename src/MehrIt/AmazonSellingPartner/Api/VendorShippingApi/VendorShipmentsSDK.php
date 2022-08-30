@@ -53,7 +53,7 @@ final class VendorShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorShipments\SubmitShipmentConfirmationsResponse
      */
-    public function submitShipmentConfirmations(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\VendorShipments\SubmitShipmentConfirmationsResponse
+    public function submitShipmentConfirmations(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->submitShipmentConfirmationsRequest($accessToken, $region, $body);
 

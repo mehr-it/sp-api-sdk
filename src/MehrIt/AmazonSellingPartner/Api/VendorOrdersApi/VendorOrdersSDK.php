@@ -62,7 +62,7 @@ final class VendorOrdersSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorOrders\GetPurchaseOrderResponse
      */
-    public function getPurchaseOrder(AccessToken $accessToken, string $region, $purchase_order_number): \MehrIt\AmazonSellingPartner\Model\VendorOrders\GetPurchaseOrderResponse
+    public function getPurchaseOrder(AccessToken $accessToken, string $region, $purchase_order_number)
     {
         $request = $this->getPurchaseOrderRequest($accessToken, $region, $purchase_order_number);
 
@@ -268,7 +268,7 @@ final class VendorOrdersSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorOrders\GetPurchaseOrdersResponse
      */
-    public function getPurchaseOrders(AccessToken $accessToken, string $region, $limit = null, $created_after = null, $created_before = null, $sort_order = null, $next_token = null, $include_details = null, $changed_after = null, $changed_before = null, $po_item_state = null, $is_po_changed = null, $purchase_order_state = null, $ordering_vendor_code = null): \MehrIt\AmazonSellingPartner\Model\VendorOrders\GetPurchaseOrdersResponse
+    public function getPurchaseOrders(AccessToken $accessToken, string $region, $limit = null, $created_after = null, $created_before = null, $sort_order = null, $next_token = null, $include_details = null, $changed_after = null, $changed_before = null, $po_item_state = null, $is_po_changed = null, $purchase_order_state = null, $ordering_vendor_code = null)
     {
         $request = $this->getPurchaseOrdersRequest($accessToken, $region, $limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code);
 
@@ -599,7 +599,7 @@ final class VendorOrdersSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorOrders\GetPurchaseOrdersStatusResponse
      */
-    public function getPurchaseOrdersStatus(AccessToken $accessToken, string $region, $limit = null, $sort_order = null, $next_token = null, $created_after = null, $created_before = null, $updated_after = null, $updated_before = null, $purchase_order_number = null, $purchase_order_status = null, $item_confirmation_status = null, $item_receive_status = null, $ordering_vendor_code = null, $ship_to_party_id = null): \MehrIt\AmazonSellingPartner\Model\VendorOrders\GetPurchaseOrdersStatusResponse
+    public function getPurchaseOrdersStatus(AccessToken $accessToken, string $region, $limit = null, $sort_order = null, $next_token = null, $created_after = null, $created_before = null, $updated_after = null, $updated_before = null, $purchase_order_number = null, $purchase_order_status = null, $item_confirmation_status = null, $item_receive_status = null, $ordering_vendor_code = null, $ship_to_party_id = null)
     {
         $request = $this->getPurchaseOrdersStatusRequest($accessToken, $region, $limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id);
 
@@ -929,7 +929,7 @@ final class VendorOrdersSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorOrders\SubmitAcknowledgementResponse
      */
-    public function submitAcknowledgement(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\VendorOrders\SubmitAcknowledgementResponse
+    public function submitAcknowledgement(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->submitAcknowledgementRequest($accessToken, $region, $body);
 

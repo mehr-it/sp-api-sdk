@@ -48,7 +48,7 @@ final class OrdersSDK
      * @param AccessToken $accessToken
      * @param string $region
      * @param string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param \MehrIt\AmazonSellingPartner\Model\Orders\UpdateShipmentStatusRequest $payload Request to update the shipment status. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Orders\UpdateShipmentStatusRequest $payload The request body for the updateShipmentStatus operation. (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
@@ -143,7 +143,7 @@ final class OrdersSDK
      * @param AccessToken $accessToken
      * @param string $region
      * @param string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param \MehrIt\AmazonSellingPartner\Model\Orders\UpdateShipmentStatusRequest $payload Request to update the shipment status. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Orders\UpdateShipmentStatusRequest $payload The request body for the updateShipmentStatus operation. (required)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface

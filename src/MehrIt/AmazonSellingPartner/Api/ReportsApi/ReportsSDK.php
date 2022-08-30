@@ -24,31 +24,31 @@ final class ReportsSDK
 
     public const OPERATION_CANCELREPORT = 'cancelReport';
 
-    public const OPERATION_CANCELREPORT_PATH = '/reports/2020-09-04/reports/{reportId}';
+    public const OPERATION_CANCELREPORT_PATH = '/reports/2021-06-30/reports/{reportId}';
     public const OPERATION_CANCELREPORTSCHEDULE = 'cancelReportSchedule';
 
-    public const OPERATION_CANCELREPORTSCHEDULE_PATH = '/reports/2020-09-04/schedules/{reportScheduleId}';
+    public const OPERATION_CANCELREPORTSCHEDULE_PATH = '/reports/2021-06-30/schedules/{reportScheduleId}';
     public const OPERATION_CREATEREPORT = 'createReport';
 
-    public const OPERATION_CREATEREPORT_PATH = '/reports/2020-09-04/reports';
+    public const OPERATION_CREATEREPORT_PATH = '/reports/2021-06-30/reports';
     public const OPERATION_CREATEREPORTSCHEDULE = 'createReportSchedule';
 
-    public const OPERATION_CREATEREPORTSCHEDULE_PATH = '/reports/2020-09-04/schedules';
+    public const OPERATION_CREATEREPORTSCHEDULE_PATH = '/reports/2021-06-30/schedules';
     public const OPERATION_GETREPORT = 'getReport';
 
-    public const OPERATION_GETREPORT_PATH = '/reports/2020-09-04/reports/{reportId}';
+    public const OPERATION_GETREPORT_PATH = '/reports/2021-06-30/reports/{reportId}';
     public const OPERATION_GETREPORTDOCUMENT = 'getReportDocument';
 
-    public const OPERATION_GETREPORTDOCUMENT_PATH = '/reports/2020-09-04/documents/{reportDocumentId}';
+    public const OPERATION_GETREPORTDOCUMENT_PATH = '/reports/2021-06-30/documents/{reportDocumentId}';
     public const OPERATION_GETREPORTSCHEDULE = 'getReportSchedule';
 
-    public const OPERATION_GETREPORTSCHEDULE_PATH = '/reports/2020-09-04/schedules/{reportScheduleId}';
+    public const OPERATION_GETREPORTSCHEDULE_PATH = '/reports/2021-06-30/schedules/{reportScheduleId}';
     public const OPERATION_GETREPORTSCHEDULES = 'getReportSchedules';
 
-    public const OPERATION_GETREPORTSCHEDULES_PATH = '/reports/2020-09-04/schedules';
+    public const OPERATION_GETREPORTSCHEDULES_PATH = '/reports/2021-06-30/schedules';
     public const OPERATION_GETREPORTS = 'getReports';
 
-    public const OPERATION_GETREPORTS_PATH = '/reports/2020-09-04/reports';
+    public const OPERATION_GETREPORTS_PATH = '/reports/2021-06-30/reports';
 
     private ClientInterface $client;
 
@@ -75,9 +75,8 @@ final class ReportsSDK
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
-     * @return \MehrIt\AmazonSellingPartner\Model\Reports\CancelReportResponse
      */
-    public function cancelReport(AccessToken $accessToken, string $region, $report_id): \MehrIt\AmazonSellingPartner\Model\Reports\CancelReportResponse
+    public function cancelReport(AccessToken $accessToken, string $region, $report_id)
     {
         $request = $this->cancelReportRequest($accessToken, $region, $report_id);
 
@@ -158,12 +157,7 @@ final class ReportsSDK
             );
         }
 
-        return ObjectSerializer::deserialize(
-            $this->configuration,
-            (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\CancelReportResponse::class,
-            []
-        );
+        return null;
     }
 
     /**
@@ -185,7 +179,7 @@ final class ReportsSDK
             );
         }
 
-        $resourcePath = '/reports/2020-09-04/reports/{reportId}';
+        $resourcePath = '/reports/2021-06-30/reports/{reportId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -270,9 +264,8 @@ final class ReportsSDK
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
-     * @return \MehrIt\AmazonSellingPartner\Model\Reports\CancelReportScheduleResponse
      */
-    public function cancelReportSchedule(AccessToken $accessToken, string $region, $report_schedule_id): \MehrIt\AmazonSellingPartner\Model\Reports\CancelReportScheduleResponse
+    public function cancelReportSchedule(AccessToken $accessToken, string $region, $report_schedule_id)
     {
         $request = $this->cancelReportScheduleRequest($accessToken, $region, $report_schedule_id);
 
@@ -353,12 +346,7 @@ final class ReportsSDK
             );
         }
 
-        return ObjectSerializer::deserialize(
-            $this->configuration,
-            (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\CancelReportScheduleResponse::class,
-            []
-        );
+        return null;
     }
 
     /**
@@ -380,7 +368,7 @@ final class ReportsSDK
             );
         }
 
-        $resourcePath = '/reports/2020-09-04/schedules/{reportScheduleId}';
+        $resourcePath = '/reports/2021-06-30/schedules/{reportScheduleId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -467,7 +455,7 @@ final class ReportsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Reports\CreateReportResponse
      */
-    public function createReport(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Reports\CreateReportResponse
+    public function createReport(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createReportRequest($accessToken, $region, $body);
 
@@ -575,7 +563,7 @@ final class ReportsSDK
             );
         }
 
-        $resourcePath = '/reports/2020-09-04/reports';
+        $resourcePath = '/reports/2021-06-30/reports';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -662,7 +650,7 @@ final class ReportsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Reports\CreateReportScheduleResponse
      */
-    public function createReportSchedule(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Reports\CreateReportScheduleResponse
+    public function createReportSchedule(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createReportScheduleRequest($accessToken, $region, $body);
 
@@ -770,7 +758,7 @@ final class ReportsSDK
             );
         }
 
-        $resourcePath = '/reports/2020-09-04/schedules';
+        $resourcePath = '/reports/2021-06-30/schedules';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -855,9 +843,9 @@ final class ReportsSDK
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
-     * @return \MehrIt\AmazonSellingPartner\Model\Reports\GetReportResponse
+     * @return \MehrIt\AmazonSellingPartner\Model\Reports\Report
      */
-    public function getReport(AccessToken $accessToken, string $region, $report_id): \MehrIt\AmazonSellingPartner\Model\Reports\GetReportResponse
+    public function getReport(AccessToken $accessToken, string $region, $report_id)
     {
         $request = $this->getReportRequest($accessToken, $region, $report_id);
 
@@ -941,7 +929,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\GetReportResponse::class,
+            \MehrIt\AmazonSellingPartner\Model\Reports\Report::class,
             []
         );
     }
@@ -965,7 +953,7 @@ final class ReportsSDK
             );
         }
 
-        $resourcePath = '/reports/2020-09-04/reports/{reportId}';
+        $resourcePath = '/reports/2021-06-30/reports/{reportId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1050,9 +1038,9 @@ final class ReportsSDK
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
-     * @return \MehrIt\AmazonSellingPartner\Model\Reports\GetReportDocumentResponse
+     * @return \MehrIt\AmazonSellingPartner\Model\Reports\ReportDocument
      */
-    public function getReportDocument(AccessToken $accessToken, string $region, $report_document_id): \MehrIt\AmazonSellingPartner\Model\Reports\GetReportDocumentResponse
+    public function getReportDocument(AccessToken $accessToken, string $region, $report_document_id)
     {
         $request = $this->getReportDocumentRequest($accessToken, $region, $report_document_id);
 
@@ -1136,7 +1124,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\GetReportDocumentResponse::class,
+            \MehrIt\AmazonSellingPartner\Model\Reports\ReportDocument::class,
             []
         );
     }
@@ -1160,7 +1148,7 @@ final class ReportsSDK
             );
         }
 
-        $resourcePath = '/reports/2020-09-04/documents/{reportDocumentId}';
+        $resourcePath = '/reports/2021-06-30/documents/{reportDocumentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1245,9 +1233,9 @@ final class ReportsSDK
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
-     * @return \MehrIt\AmazonSellingPartner\Model\Reports\GetReportScheduleResponse
+     * @return \MehrIt\AmazonSellingPartner\Model\Reports\ReportSchedule
      */
-    public function getReportSchedule(AccessToken $accessToken, string $region, $report_schedule_id): \MehrIt\AmazonSellingPartner\Model\Reports\GetReportScheduleResponse
+    public function getReportSchedule(AccessToken $accessToken, string $region, $report_schedule_id)
     {
         $request = $this->getReportScheduleRequest($accessToken, $region, $report_schedule_id);
 
@@ -1331,7 +1319,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\GetReportScheduleResponse::class,
+            \MehrIt\AmazonSellingPartner\Model\Reports\ReportSchedule::class,
             []
         );
     }
@@ -1355,7 +1343,7 @@ final class ReportsSDK
             );
         }
 
-        $resourcePath = '/reports/2020-09-04/schedules/{reportScheduleId}';
+        $resourcePath = '/reports/2021-06-30/schedules/{reportScheduleId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1440,9 +1428,9 @@ final class ReportsSDK
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
-     * @return \MehrIt\AmazonSellingPartner\Model\Reports\GetReportSchedulesResponse
+     * @return \MehrIt\AmazonSellingPartner\Model\Reports\ReportScheduleList
      */
-    public function getReportSchedules(AccessToken $accessToken, string $region, $report_types): \MehrIt\AmazonSellingPartner\Model\Reports\GetReportSchedulesResponse
+    public function getReportSchedules(AccessToken $accessToken, string $region, $report_types)
     {
         $request = $this->getReportSchedulesRequest($accessToken, $region, $report_types);
 
@@ -1526,7 +1514,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            \MehrIt\AmazonSellingPartner\Model\Reports\GetReportSchedulesResponse::class,
+            \MehrIt\AmazonSellingPartner\Model\Reports\ReportScheduleList::class,
             []
         );
     }
@@ -1557,7 +1545,7 @@ final class ReportsSDK
         }
 
 
-        $resourcePath = '/reports/2020-09-04/schedules';
+        $resourcePath = '/reports/2021-06-30/schedules';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1652,7 +1640,7 @@ final class ReportsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Reports\GetReportsResponse
      */
-    public function getReports(AccessToken $accessToken, string $region, $report_types = null, $processing_statuses = null, $marketplace_ids = null, $page_size = 10, $created_since = null, $created_until = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\Reports\GetReportsResponse
+    public function getReports(AccessToken $accessToken, string $region, $report_types = null, $processing_statuses = null, $marketplace_ids = null, $page_size = 10, $created_since = null, $created_until = null, $next_token = null)
     {
         $request = $this->getReportsRequest($accessToken, $region, $report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
 
@@ -1785,7 +1773,7 @@ final class ReportsSDK
         }
 
 
-        $resourcePath = '/reports/2020-09-04/reports';
+        $resourcePath = '/reports/2021-06-30/reports';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

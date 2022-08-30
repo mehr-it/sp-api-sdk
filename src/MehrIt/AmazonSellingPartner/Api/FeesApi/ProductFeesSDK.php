@@ -28,6 +28,9 @@ final class ProductFeesSDK
     public const OPERATION_GETMYFEESESTIMATEFORSKU = 'getMyFeesEstimateForSKU';
 
     public const OPERATION_GETMYFEESESTIMATEFORSKU_PATH = '/products/fees/v0/listings/{SellerSKU}/feesEstimate';
+    public const OPERATION_GETMYFEESESTIMATES = 'getMyFeesEstimates';
+
+    public const OPERATION_GETMYFEESESTIMATES_PATH = '/products/fees/v0/feesEstimate';
 
     private ClientInterface $client;
 
@@ -57,7 +60,7 @@ final class ProductFeesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ProductFees\GetMyFeesEstimateResponse
      */
-    public function getMyFeesEstimateForASIN(AccessToken $accessToken, string $region, $asin, $body): \MehrIt\AmazonSellingPartner\Model\ProductFees\GetMyFeesEstimateResponse
+    public function getMyFeesEstimateForASIN(AccessToken $accessToken, string $region, $asin, $body)
     {
         $request = $this->getMyFeesEstimateForASINRequest($accessToken, $region, $asin, $body);
 
@@ -268,7 +271,7 @@ final class ProductFeesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ProductFees\GetMyFeesEstimateResponse
      */
-    public function getMyFeesEstimateForSKU(AccessToken $accessToken, string $region, $seller_sku, $body): \MehrIt\AmazonSellingPartner\Model\ProductFees\GetMyFeesEstimateResponse
+    public function getMyFeesEstimateForSKU(AccessToken $accessToken, string $region, $seller_sku, $body)
     {
         $request = $this->getMyFeesEstimateForSKURequest($accessToken, $region, $seller_sku, $body);
 
@@ -404,6 +407,201 @@ final class ProductFeesSDK
                 $resourcePath
             );
         }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'POST',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation getMyFeesEstimates
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param \MehrIt\AmazonSellingPartner\Model\ProductFees\FeesEstimateByIdRequest[] $body body (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\ProductFees\FeesEstimateResult[]
+     */
+    public function getMyFeesEstimates(AccessToken $accessToken, string $region, $body)
+    {
+        $request = $this->getMyFeesEstimatesRequest($accessToken, $region, $body);
+
+        $this->configuration->extensions()->preRequest('ProductFees', 'getMyFeesEstimates', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('ProductFees', 'getMyFeesEstimates')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('ProductFees', 'getMyFeesEstimates'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'ProductFees',
+                        'operation' => 'getMyFeesEstimates',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('ProductFees', 'getMyFeesEstimates', $request, $response);
+
+            if ($this->configuration->loggingEnabled('ProductFees', 'getMyFeesEstimates')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('ProductFees', 'getMyFeesEstimates'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'ProductFees',
+                        'operation' => 'getMyFeesEstimates',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\ProductFees\FeesEstimateResult[]::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'getMyFeesEstimates'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param \MehrIt\AmazonSellingPartner\Model\ProductFees\FeesEstimateByIdRequest[] $body (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getMyFeesEstimatesRequest(AccessToken $accessToken, string $region, $body) : RequestInterface
+    {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling getMyFeesEstimates'
+            );
+        }
+
+        $resourcePath = '/products/fees/v0/feesEstimate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
 
 
         if ($multipart) {

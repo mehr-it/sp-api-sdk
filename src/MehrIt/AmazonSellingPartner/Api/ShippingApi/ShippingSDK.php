@@ -77,7 +77,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\CancelShipmentResponse
      */
-    public function cancelShipment(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\Shipping\CancelShipmentResponse
+    public function cancelShipment(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->cancelShipmentRequest($accessToken, $region, $shipment_id);
 
@@ -272,7 +272,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\CreateShipmentResponse
      */
-    public function createShipment(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Shipping\CreateShipmentResponse
+    public function createShipment(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createShipmentRequest($accessToken, $region, $body);
 
@@ -466,7 +466,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\GetAccountResponse
      */
-    public function getAccount(AccessToken $accessToken, string $region): \MehrIt\AmazonSellingPartner\Model\Shipping\GetAccountResponse
+    public function getAccount(AccessToken $accessToken, string $region)
     {
         $request = $this->getAccountRequest($accessToken, $region);
 
@@ -646,7 +646,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\GetRatesResponse
      */
-    public function getRates(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Shipping\GetRatesResponse
+    public function getRates(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->getRatesRequest($accessToken, $region, $body);
 
@@ -841,7 +841,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\GetShipmentResponse
      */
-    public function getShipment(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\Shipping\GetShipmentResponse
+    public function getShipment(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->getShipmentRequest($accessToken, $region, $shipment_id);
 
@@ -1036,7 +1036,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\GetTrackingInformationResponse
      */
-    public function getTrackingInformation(AccessToken $accessToken, string $region, $tracking_id): \MehrIt\AmazonSellingPartner\Model\Shipping\GetTrackingInformationResponse
+    public function getTrackingInformation(AccessToken $accessToken, string $region, $tracking_id)
     {
         $request = $this->getTrackingInformationRequest($accessToken, $region, $tracking_id);
 
@@ -1232,7 +1232,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\PurchaseLabelsResponse
      */
-    public function purchaseLabels(AccessToken $accessToken, string $region, $shipment_id, $body): \MehrIt\AmazonSellingPartner\Model\Shipping\PurchaseLabelsResponse
+    public function purchaseLabels(AccessToken $accessToken, string $region, $shipment_id, $body)
     {
         $request = $this->purchaseLabelsRequest($accessToken, $region, $shipment_id, $body);
 
@@ -1442,7 +1442,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\PurchaseShipmentResponse
      */
-    public function purchaseShipment(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Shipping\PurchaseShipmentResponse
+    public function purchaseShipment(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->purchaseShipmentRequest($accessToken, $region, $body);
 
@@ -1639,7 +1639,7 @@ final class ShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Shipping\RetrieveShippingLabelResponse
      */
-    public function retrieveShippingLabel(AccessToken $accessToken, string $region, $shipment_id, $tracking_id, $body): \MehrIt\AmazonSellingPartner\Model\Shipping\RetrieveShippingLabelResponse
+    public function retrieveShippingLabel(AccessToken $accessToken, string $region, $shipment_id, $tracking_id, $body)
     {
         $request = $this->retrieveShippingLabelRequest($accessToken, $region, $shipment_id, $tracking_id, $body);
 

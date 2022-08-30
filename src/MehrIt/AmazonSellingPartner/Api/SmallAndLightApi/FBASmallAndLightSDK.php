@@ -277,7 +277,7 @@ final class FBASmallAndLightSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEligibility
      */
-    public function getSmallAndLightEligibilityBySellerSKU(AccessToken $accessToken, string $region, $seller_sku, $marketplace_ids): \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEligibility
+    public function getSmallAndLightEligibilityBySellerSKU(AccessToken $accessToken, string $region, $seller_sku, $marketplace_ids)
     {
         $request = $this->getSmallAndLightEligibilityBySellerSKURequest($accessToken, $region, $seller_sku, $marketplace_ids);
 
@@ -494,7 +494,7 @@ final class FBASmallAndLightSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollment
      */
-    public function getSmallAndLightEnrollmentBySellerSKU(AccessToken $accessToken, string $region, $seller_sku, $marketplace_ids): \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollment
+    public function getSmallAndLightEnrollmentBySellerSKU(AccessToken $accessToken, string $region, $seller_sku, $marketplace_ids)
     {
         $request = $this->getSmallAndLightEnrollmentBySellerSKURequest($accessToken, $region, $seller_sku, $marketplace_ids);
 
@@ -710,7 +710,7 @@ final class FBASmallAndLightSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightFeePreviews
      */
-    public function getSmallAndLightFeePreview(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightFeePreviews
+    public function getSmallAndLightFeePreview(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->getSmallAndLightFeePreviewRequest($accessToken, $region, $body);
 
@@ -906,7 +906,7 @@ final class FBASmallAndLightSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollment
      */
-    public function putSmallAndLightEnrollmentBySellerSKU(AccessToken $accessToken, string $region, $seller_sku, $marketplace_ids): \MehrIt\AmazonSellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollment
+    public function putSmallAndLightEnrollmentBySellerSKU(AccessToken $accessToken, string $region, $seller_sku, $marketplace_ids)
     {
         $request = $this->putSmallAndLightEnrollmentBySellerSKURequest($accessToken, $region, $seller_sku, $marketplace_ids);
 

@@ -62,7 +62,7 @@ final class ProductTypesDefinitionsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ProductTypesDefinitions\ProductTypeDefinition
      */
-    public function getDefinitionsProductType(AccessToken $accessToken, string $region, $product_type, $marketplace_ids, $seller_id = null, $product_type_version = 'LATEST', $requirements = 'LISTING', $requirements_enforced = 'ENFORCED', $locale = 'DEFAULT'): \MehrIt\AmazonSellingPartner\Model\ProductTypesDefinitions\ProductTypeDefinition
+    public function getDefinitionsProductType(AccessToken $accessToken, string $region, $product_type, $marketplace_ids, $seller_id = null, $product_type_version = 'LATEST', $requirements = 'LISTING', $requirements_enforced = 'ENFORCED', $locale = 'DEFAULT')
     {
         $request = $this->getDefinitionsProductTypeRequest($accessToken, $region, $product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
 
@@ -330,7 +330,7 @@ final class ProductTypesDefinitionsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ProductTypesDefinitions\ProductTypeList
      */
-    public function searchDefinitionsProductTypes(AccessToken $accessToken, string $region, $marketplace_ids, $keywords = null): \MehrIt\AmazonSellingPartner\Model\ProductTypesDefinitions\ProductTypeList
+    public function searchDefinitionsProductTypes(AccessToken $accessToken, string $region, $marketplace_ids, $keywords = null)
     {
         $request = $this->searchDefinitionsProductTypesRequest($accessToken, $region, $marketplace_ids, $keywords);
 

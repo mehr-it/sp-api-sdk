@@ -59,7 +59,7 @@ class FeesEstimateIdentifier implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPITypes = [
         'marketplace_id' => 'string',
         'seller_id' => 'string',
-        'id_type' => 'string',
+        'id_type' => '\MehrIt\AmazonSellingPartner\Model\ProductFees\IdType',
         'id_value' => 'string',
         'is_amazon_fulfilled' => 'bool',
         'price_to_estimate_fees' => '\MehrIt\AmazonSellingPartner\Model\ProductFees\PriceToEstimateFees',
@@ -296,7 +296,7 @@ class FeesEstimateIdentifier implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets id_type
      *
-     * @return string|null
+     * @return \MehrIt\AmazonSellingPartner\Model\ProductFees\IdType|null
      */
     public function getIdType()
     {
@@ -306,7 +306,7 @@ class FeesEstimateIdentifier implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets id_type
      *
-     * @param string|null $id_type The type of item identifier specified.
+     * @param \MehrIt\AmazonSellingPartner\Model\ProductFees\IdType|null $id_type id_type
      *
      * @return self
      */

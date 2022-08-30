@@ -74,7 +74,7 @@ final class NotificationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Notifications\CreateDestinationResponse
      */
-    public function createDestination(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\Notifications\CreateDestinationResponse
+    public function createDestination(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createDestinationRequest($accessToken, $region, $body);
 
@@ -270,7 +270,7 @@ final class NotificationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Notifications\CreateSubscriptionResponse
      */
-    public function createSubscription(AccessToken $accessToken, string $region, $notification_type, $body): \MehrIt\AmazonSellingPartner\Model\Notifications\CreateSubscriptionResponse
+    public function createSubscription(AccessToken $accessToken, string $region, $notification_type, $body)
     {
         $request = $this->createSubscriptionRequest($accessToken, $region, $notification_type, $body);
 
@@ -480,7 +480,7 @@ final class NotificationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Notifications\DeleteDestinationResponse
      */
-    public function deleteDestination(AccessToken $accessToken, string $region, $destination_id): \MehrIt\AmazonSellingPartner\Model\Notifications\DeleteDestinationResponse
+    public function deleteDestination(AccessToken $accessToken, string $region, $destination_id)
     {
         $request = $this->deleteDestinationRequest($accessToken, $region, $destination_id);
 
@@ -676,7 +676,7 @@ final class NotificationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Notifications\DeleteSubscriptionByIdResponse
      */
-    public function deleteSubscriptionById(AccessToken $accessToken, string $region, $subscription_id, $notification_type): \MehrIt\AmazonSellingPartner\Model\Notifications\DeleteSubscriptionByIdResponse
+    public function deleteSubscriptionById(AccessToken $accessToken, string $region, $subscription_id, $notification_type)
     {
         $request = $this->deleteSubscriptionByIdRequest($accessToken, $region, $subscription_id, $notification_type);
 
@@ -886,7 +886,7 @@ final class NotificationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Notifications\GetDestinationResponse
      */
-    public function getDestination(AccessToken $accessToken, string $region, $destination_id): \MehrIt\AmazonSellingPartner\Model\Notifications\GetDestinationResponse
+    public function getDestination(AccessToken $accessToken, string $region, $destination_id)
     {
         $request = $this->getDestinationRequest($accessToken, $region, $destination_id);
 
@@ -1080,7 +1080,7 @@ final class NotificationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Notifications\GetDestinationsResponse
      */
-    public function getDestinations(AccessToken $accessToken, string $region): \MehrIt\AmazonSellingPartner\Model\Notifications\GetDestinationsResponse
+    public function getDestinations(AccessToken $accessToken, string $region)
     {
         $request = $this->getDestinationsRequest($accessToken, $region);
 
@@ -1260,7 +1260,7 @@ final class NotificationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Notifications\GetSubscriptionResponse
      */
-    public function getSubscription(AccessToken $accessToken, string $region, $notification_type): \MehrIt\AmazonSellingPartner\Model\Notifications\GetSubscriptionResponse
+    public function getSubscription(AccessToken $accessToken, string $region, $notification_type)
     {
         $request = $this->getSubscriptionRequest($accessToken, $region, $notification_type);
 
@@ -1456,7 +1456,7 @@ final class NotificationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Notifications\GetSubscriptionByIdResponse
      */
-    public function getSubscriptionById(AccessToken $accessToken, string $region, $subscription_id, $notification_type): \MehrIt\AmazonSellingPartner\Model\Notifications\GetSubscriptionByIdResponse
+    public function getSubscriptionById(AccessToken $accessToken, string $region, $subscription_id, $notification_type)
     {
         $request = $this->getSubscriptionByIdRequest($accessToken, $region, $subscription_id, $notification_type);
 

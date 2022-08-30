@@ -103,7 +103,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\ConfirmPreorderResponse
      */
-    public function confirmPreorder(AccessToken $accessToken, string $region, $shipment_id, $need_by_date, $marketplace_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\ConfirmPreorderResponse
+    public function confirmPreorder(AccessToken $accessToken, string $region, $shipment_id, $need_by_date, $marketplace_id)
     {
         $request = $this->confirmPreorderRequest($accessToken, $region, $shipment_id, $need_by_date, $marketplace_id);
 
@@ -332,7 +332,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\ConfirmTransportResponse
      */
-    public function confirmTransport(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\ConfirmTransportResponse
+    public function confirmTransport(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->confirmTransportRequest($accessToken, $region, $shipment_id);
 
@@ -528,7 +528,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\InboundShipmentResponse
      */
-    public function createInboundShipment(AccessToken $accessToken, string $region, $shipment_id, $body): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\InboundShipmentResponse
+    public function createInboundShipment(AccessToken $accessToken, string $region, $shipment_id, $body)
     {
         $request = $this->createInboundShipmentRequest($accessToken, $region, $shipment_id, $body);
 
@@ -738,7 +738,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanResponse
      */
-    public function createInboundShipmentPlan(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanResponse
+    public function createInboundShipmentPlan(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createInboundShipmentPlanRequest($accessToken, $region, $body);
 
@@ -933,7 +933,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\EstimateTransportResponse
      */
-    public function estimateTransport(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\EstimateTransportResponse
+    public function estimateTransport(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->estimateTransportRequest($accessToken, $region, $shipment_id);
 
@@ -1128,7 +1128,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetBillOfLadingResponse
      */
-    public function getBillOfLading(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetBillOfLadingResponse
+    public function getBillOfLading(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->getBillOfLadingRequest($accessToken, $region, $shipment_id);
 
@@ -1325,7 +1325,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetInboundGuidanceResponse
      */
-    public function getInboundGuidance(AccessToken $accessToken, string $region, $marketplace_id, $seller_sku_list = null, $asin_list = null): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetInboundGuidanceResponse
+    public function getInboundGuidance(AccessToken $accessToken, string $region, $marketplace_id, $seller_sku_list = null, $asin_list = null)
     {
         $request = $this->getInboundGuidanceRequest($accessToken, $region, $marketplace_id, $seller_sku_list, $asin_list);
 
@@ -1559,7 +1559,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetLabelsResponse
      */
-    public function getLabels(AccessToken $accessToken, string $region, $shipment_id, $page_type, $label_type, $number_of_packages = null, $package_labels_to_print = null, $number_of_pallets = null, $page_size = null, $page_start_index = null): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetLabelsResponse
+    public function getLabels(AccessToken $accessToken, string $region, $shipment_id, $page_type, $label_type, $number_of_packages = null, $package_labels_to_print = null, $number_of_pallets = null, $page_size = null, $page_start_index = null)
     {
         $request = $this->getLabelsRequest($accessToken, $region, $shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index);
 
@@ -1848,7 +1848,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetPreorderInfoResponse
      */
-    public function getPreorderInfo(AccessToken $accessToken, string $region, $shipment_id, $marketplace_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetPreorderInfoResponse
+    public function getPreorderInfo(AccessToken $accessToken, string $region, $shipment_id, $marketplace_id)
     {
         $request = $this->getPreorderInfoRequest($accessToken, $region, $shipment_id, $marketplace_id);
 
@@ -2062,7 +2062,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetPrepInstructionsResponse
      */
-    public function getPrepInstructions(AccessToken $accessToken, string $region, $ship_to_country_code, $seller_sku_list = null, $asin_list = null): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetPrepInstructionsResponse
+    public function getPrepInstructions(AccessToken $accessToken, string $region, $ship_to_country_code, $seller_sku_list = null, $asin_list = null)
     {
         $request = $this->getPrepInstructionsRequest($accessToken, $region, $ship_to_country_code, $seller_sku_list, $asin_list);
 
@@ -2293,7 +2293,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse
      */
-    public function getShipmentItems(AccessToken $accessToken, string $region, $query_type, $marketplace_id, $last_updated_after = null, $last_updated_before = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse
+    public function getShipmentItems(AccessToken $accessToken, string $region, $query_type, $marketplace_id, $last_updated_after = null, $last_updated_before = null, $next_token = null)
     {
         $request = $this->getShipmentItemsRequest($accessToken, $region, $query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token);
 
@@ -2541,7 +2541,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse
      */
-    public function getShipmentItemsByShipmentId(AccessToken $accessToken, string $region, $shipment_id, $marketplace_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse
+    public function getShipmentItemsByShipmentId(AccessToken $accessToken, string $region, $shipment_id, $marketplace_id)
     {
         $request = $this->getShipmentItemsByShipmentIdRequest($accessToken, $region, $shipment_id, $marketplace_id);
 
@@ -2759,7 +2759,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentsResponse
      */
-    public function getShipments(AccessToken $accessToken, string $region, $query_type, $marketplace_id, $shipment_status_list = null, $shipment_id_list = null, $last_updated_after = null, $last_updated_before = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetShipmentsResponse
+    public function getShipments(AccessToken $accessToken, string $region, $query_type, $marketplace_id, $shipment_status_list = null, $shipment_id_list = null, $last_updated_after = null, $last_updated_before = null, $next_token = null)
     {
         $request = $this->getShipmentsRequest($accessToken, $region, $query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token);
 
@@ -3028,7 +3028,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetTransportDetailsResponse
      */
-    public function getTransportDetails(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\GetTransportDetailsResponse
+    public function getTransportDetails(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->getTransportDetailsRequest($accessToken, $region, $shipment_id);
 
@@ -3224,7 +3224,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\PutTransportDetailsResponse
      */
-    public function putTransportDetails(AccessToken $accessToken, string $region, $shipment_id, $body): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\PutTransportDetailsResponse
+    public function putTransportDetails(AccessToken $accessToken, string $region, $shipment_id, $body)
     {
         $request = $this->putTransportDetailsRequest($accessToken, $region, $shipment_id, $body);
 
@@ -3435,7 +3435,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\InboundShipmentResponse
      */
-    public function updateInboundShipment(AccessToken $accessToken, string $region, $shipment_id, $body): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\InboundShipmentResponse
+    public function updateInboundShipment(AccessToken $accessToken, string $region, $shipment_id, $body)
     {
         $request = $this->updateInboundShipmentRequest($accessToken, $region, $shipment_id, $body);
 
@@ -3645,7 +3645,7 @@ final class FulfillmentInboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\VoidTransportResponse
      */
-    public function voidTransport(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentInbound\VoidTransportResponse
+    public function voidTransport(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->voidTransportRequest($accessToken, $region, $shipment_id);
 

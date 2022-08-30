@@ -59,7 +59,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetShippingLabelResponse
      */
-    public function getShippingLabel(AccessToken $accessToken, string $region, $purchase_order_number): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetShippingLabelResponse
+    public function getShippingLabel(AccessToken $accessToken, string $region, $purchase_order_number)
     {
         $request = $this->getShippingLabelRequest($accessToken, $region, $purchase_order_number);
 
@@ -263,7 +263,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetShippingLabelListResponse
      */
-    public function getShippingLabels(AccessToken $accessToken, string $region, $created_after, $created_before, $ship_from_party_id = null, $limit = null, $sort_order = 'ASC', $next_token = null): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetShippingLabelListResponse
+    public function getShippingLabels(AccessToken $accessToken, string $region, $created_after, $created_before, $ship_from_party_id = null, $limit = null, $sort_order = 'ASC', $next_token = null)
     {
         $request = $this->getShippingLabelsRequest($accessToken, $region, $created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
 
@@ -528,7 +528,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShippingLabelsResponse
      */
-    public function submitShippingLabelRequest(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShippingLabelsResponse
+    public function submitShippingLabelRequest(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->submitShippingLabelRequestRequest($accessToken, $region, $body);
 

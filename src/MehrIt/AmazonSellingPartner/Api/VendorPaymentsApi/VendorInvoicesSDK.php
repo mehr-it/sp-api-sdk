@@ -53,7 +53,7 @@ final class VendorInvoicesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorInvoices\SubmitInvoicesResponse
      */
-    public function submitInvoices(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\VendorInvoices\SubmitInvoicesResponse
+    public function submitInvoices(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->submitInvoicesRequest($accessToken, $region, $body);
 

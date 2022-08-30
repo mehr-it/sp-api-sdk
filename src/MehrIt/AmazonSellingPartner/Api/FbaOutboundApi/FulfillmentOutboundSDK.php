@@ -86,7 +86,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\CancelFulfillmentOrderResponse
      */
-    public function cancelFulfillmentOrder(AccessToken $accessToken, string $region, $seller_fulfillment_order_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\CancelFulfillmentOrderResponse
+    public function cancelFulfillmentOrder(AccessToken $accessToken, string $region, $seller_fulfillment_order_id)
     {
         $request = $this->cancelFulfillmentOrderRequest($accessToken, $region, $seller_fulfillment_order_id);
 
@@ -285,7 +285,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\CreateFulfillmentOrderResponse
      */
-    public function createFulfillmentOrder(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\CreateFulfillmentOrderResponse
+    public function createFulfillmentOrder(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->createFulfillmentOrderRequest($accessToken, $region, $body);
 
@@ -481,7 +481,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\CreateFulfillmentReturnResponse
      */
-    public function createFulfillmentReturn(AccessToken $accessToken, string $region, $seller_fulfillment_order_id, $body): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\CreateFulfillmentReturnResponse
+    public function createFulfillmentReturn(AccessToken $accessToken, string $region, $seller_fulfillment_order_id, $body)
     {
         $request = $this->createFulfillmentReturnRequest($accessToken, $region, $seller_fulfillment_order_id, $body);
 
@@ -693,7 +693,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFeatureInventoryResponse
      */
-    public function getFeatureInventory(AccessToken $accessToken, string $region, $marketplace_id, $feature_name, $next_token = null): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFeatureInventoryResponse
+    public function getFeatureInventory(AccessToken $accessToken, string $region, $marketplace_id, $feature_name, $next_token = null)
     {
         $request = $this->getFeatureInventoryRequest($accessToken, $region, $marketplace_id, $feature_name, $next_token);
 
@@ -918,7 +918,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFeatureSkuResponse
      */
-    public function getFeatureSKU(AccessToken $accessToken, string $region, $marketplace_id, $feature_name, $seller_sku): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFeatureSkuResponse
+    public function getFeatureSKU(AccessToken $accessToken, string $region, $marketplace_id, $feature_name, $seller_sku)
     {
         $request = $this->getFeatureSKURequest($accessToken, $region, $marketplace_id, $feature_name, $seller_sku);
 
@@ -1145,7 +1145,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFeaturesResponse
      */
-    public function getFeatures(AccessToken $accessToken, string $region, $marketplace_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFeaturesResponse
+    public function getFeatures(AccessToken $accessToken, string $region, $marketplace_id)
     {
         $request = $this->getFeaturesRequest($accessToken, $region, $marketplace_id);
 
@@ -1342,7 +1342,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFulfillmentOrderResponse
      */
-    public function getFulfillmentOrder(AccessToken $accessToken, string $region, $seller_fulfillment_order_id): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFulfillmentOrderResponse
+    public function getFulfillmentOrder(AccessToken $accessToken, string $region, $seller_fulfillment_order_id)
     {
         $request = $this->getFulfillmentOrderRequest($accessToken, $region, $seller_fulfillment_order_id);
 
@@ -1541,7 +1541,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFulfillmentPreviewResponse
      */
-    public function getFulfillmentPreview(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetFulfillmentPreviewResponse
+    public function getFulfillmentPreview(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->getFulfillmentPreviewRequest($accessToken, $region, $body);
 
@@ -1736,7 +1736,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetPackageTrackingDetailsResponse
      */
-    public function getPackageTrackingDetails(AccessToken $accessToken, string $region, $package_number): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\GetPackageTrackingDetailsResponse
+    public function getPackageTrackingDetails(AccessToken $accessToken, string $region, $package_number)
     {
         $request = $this->getPackageTrackingDetailsRequest($accessToken, $region, $package_number);
 
@@ -1934,7 +1934,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\ListAllFulfillmentOrdersResponse
      */
-    public function listAllFulfillmentOrders(AccessToken $accessToken, string $region, $query_start_date = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\ListAllFulfillmentOrdersResponse
+    public function listAllFulfillmentOrders(AccessToken $accessToken, string $region, $query_start_date = null, $next_token = null)
     {
         $request = $this->listAllFulfillmentOrdersRequest($accessToken, $region, $query_start_date, $next_token);
 
@@ -2139,7 +2139,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\ListReturnReasonCodesResponse
      */
-    public function listReturnReasonCodes(AccessToken $accessToken, string $region, $seller_sku, $language, $marketplace_id = null, $seller_fulfillment_order_id = null): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\ListReturnReasonCodesResponse
+    public function listReturnReasonCodes(AccessToken $accessToken, string $region, $seller_sku, $language, $marketplace_id = null, $seller_fulfillment_order_id = null)
     {
         $request = $this->listReturnReasonCodesRequest($accessToken, $region, $seller_sku, $language, $marketplace_id, $seller_fulfillment_order_id);
 
@@ -2376,7 +2376,7 @@ final class FulfillmentOutboundSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\UpdateFulfillmentOrderResponse
      */
-    public function updateFulfillmentOrder(AccessToken $accessToken, string $region, $seller_fulfillment_order_id, $body): \MehrIt\AmazonSellingPartner\Model\FulfillmentOutbound\UpdateFulfillmentOrderResponse
+    public function updateFulfillmentOrder(AccessToken $accessToken, string $region, $seller_fulfillment_order_id, $body)
     {
         $request = $this->updateFulfillmentOrderRequest($accessToken, $region, $seller_fulfillment_order_id, $body);
 

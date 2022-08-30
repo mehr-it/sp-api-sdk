@@ -228,7 +228,7 @@ class Attachment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets upload_destination_id
      *
-     * @param string $upload_destination_id The identifier of the upload destination. Get this value by calling the createUploadDestination operation of the Uploads API.
+     * @param string $upload_destination_id The identifier of the upload destination. Get this value by calling the [createUploadDestinationForResource](doc:uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation of the Uploads API.
      *
      * @return self
      */

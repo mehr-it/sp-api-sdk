@@ -25,12 +25,36 @@ final class ServicesSDK
     public const OPERATION_ADDAPPOINTMENTFORSERVICEJOBBYSERVICEJOBID = 'addAppointmentForServiceJobByServiceJobId';
 
     public const OPERATION_ADDAPPOINTMENTFORSERVICEJOBBYSERVICEJOBID_PATH = '/service/v1/serviceJobs/{serviceJobId}/appointments';
+    public const OPERATION_ASSIGNAPPOINTMENTRESOURCES = 'assignAppointmentResources';
+
+    public const OPERATION_ASSIGNAPPOINTMENTRESOURCES_PATH = '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources';
+    public const OPERATION_CANCELRESERVATION = 'cancelReservation';
+
+    public const OPERATION_CANCELRESERVATION_PATH = '/service/v1/reservation/{reservationId}';
     public const OPERATION_CANCELSERVICEJOBBYSERVICEJOBID = 'cancelServiceJobByServiceJobId';
 
     public const OPERATION_CANCELSERVICEJOBBYSERVICEJOBID_PATH = '/service/v1/serviceJobs/{serviceJobId}/cancellations';
     public const OPERATION_COMPLETESERVICEJOBBYSERVICEJOBID = 'completeServiceJobByServiceJobId';
 
     public const OPERATION_COMPLETESERVICEJOBBYSERVICEJOBID_PATH = '/service/v1/serviceJobs/{serviceJobId}/completions';
+    public const OPERATION_CREATERESERVATION = 'createReservation';
+
+    public const OPERATION_CREATERESERVATION_PATH = '/service/v1/reservation';
+    public const OPERATION_CREATESERVICEDOCUMENTUPLOADDESTINATION = 'createServiceDocumentUploadDestination';
+
+    public const OPERATION_CREATESERVICEDOCUMENTUPLOADDESTINATION_PATH = '/service/v1/documents';
+    public const OPERATION_GETAPPOINTMENTSLOTS = 'getAppointmentSlots';
+
+    public const OPERATION_GETAPPOINTMENTSLOTS_PATH = '/service/v1/appointmentSlots';
+    public const OPERATION_GETAPPOINTMMENTSLOTSBYJOBID = 'getAppointmmentSlotsByJobId';
+
+    public const OPERATION_GETAPPOINTMMENTSLOTSBYJOBID_PATH = '/service/v1/serviceJobs/{serviceJobId}/appointmentSlots';
+    public const OPERATION_GETFIXEDSLOTCAPACITY = 'getFixedSlotCapacity';
+
+    public const OPERATION_GETFIXEDSLOTCAPACITY_PATH = '/service/v1/serviceResources/{resourceId}/capacity/fixed';
+    public const OPERATION_GETRANGESLOTCAPACITY = 'getRangeSlotCapacity';
+
+    public const OPERATION_GETRANGESLOTCAPACITY_PATH = '/service/v1/serviceResources/{resourceId}/capacity/range';
     public const OPERATION_GETSERVICEJOBBYSERVICEJOBID = 'getServiceJobByServiceJobId';
 
     public const OPERATION_GETSERVICEJOBBYSERVICEJOBID_PATH = '/service/v1/serviceJobs/{serviceJobId}';
@@ -40,6 +64,15 @@ final class ServicesSDK
     public const OPERATION_RESCHEDULEAPPOINTMENTFORSERVICEJOBBYSERVICEJOBID = 'rescheduleAppointmentForServiceJobByServiceJobId';
 
     public const OPERATION_RESCHEDULEAPPOINTMENTFORSERVICEJOBBYSERVICEJOBID_PATH = '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}';
+    public const OPERATION_SETAPPOINTMENTFULFILLMENTDATA = 'setAppointmentFulfillmentData';
+
+    public const OPERATION_SETAPPOINTMENTFULFILLMENTDATA_PATH = '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment';
+    public const OPERATION_UPDATERESERVATION = 'updateReservation';
+
+    public const OPERATION_UPDATERESERVATION_PATH = '/service/v1/reservation/{reservationId}';
+    public const OPERATION_UPDATESCHEDULE = 'updateSchedule';
+
+    public const OPERATION_UPDATESCHEDULE_PATH = '/service/v1/serviceResources/{resourceId}/schedules';
 
     private ClientInterface $client;
 
@@ -69,7 +102,7 @@ final class ServicesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentResponse
      */
-    public function addAppointmentForServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id, $body): \MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentResponse
+    public function addAppointmentForServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id, $body)
     {
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id, $body);
 
@@ -276,6 +309,471 @@ final class ServicesSDK
     }
 
     /**
+     * Operation assignAppointmentResources
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $service_job_id An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param string $appointment_id An Amazon-defined identifier of active service job appointment. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\AssignAppointmentResourcesRequest $body body (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\AssignAppointmentResourcesResponse
+     */
+    public function assignAppointmentResources(AccessToken $accessToken, string $region, $service_job_id, $appointment_id, $body)
+    {
+        $request = $this->assignAppointmentResourcesRequest($accessToken, $region, $service_job_id, $appointment_id, $body);
+
+        $this->configuration->extensions()->preRequest('Services', 'assignAppointmentResources', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'assignAppointmentResources')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'assignAppointmentResources'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'assignAppointmentResources',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'assignAppointmentResources', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'assignAppointmentResources')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'assignAppointmentResources'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'assignAppointmentResources',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\AssignAppointmentResourcesResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'assignAppointmentResources'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $service_job_id An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param string $appointment_id An Amazon-defined identifier of active service job appointment. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\AssignAppointmentResourcesRequest $body (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function assignAppointmentResourcesRequest(AccessToken $accessToken, string $region, $service_job_id, $appointment_id, $body) : RequestInterface
+    {
+        // verify the required parameter 'service_job_id' is set
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $service_job_id when calling assignAppointmentResources'
+            );
+        }
+        if (strlen($service_job_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$service_job_id" when calling ServiceApi.assignAppointmentResources, must be smaller than or equal to 100.');
+        }
+        if (strlen($service_job_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$service_job_id" when calling ServiceApi.assignAppointmentResources, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'appointment_id' is set
+        if ($appointment_id === null || (is_array($appointment_id) && count($appointment_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $appointment_id when calling assignAppointmentResources'
+            );
+        }
+        if (strlen($appointment_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$appointment_id" when calling ServiceApi.assignAppointmentResources, must be smaller than or equal to 100.');
+        }
+        if (strlen($appointment_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$appointment_id" when calling ServiceApi.assignAppointmentResources, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling assignAppointmentResources'
+            );
+        }
+
+        $resourcePath = '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+        // path params
+        if ($service_job_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'serviceJobId' . '}',
+                ObjectSerializer::toPathValue($service_job_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($appointment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appointmentId' . '}',
+                ObjectSerializer::toPathValue($appointment_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'PUT',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation cancelReservation
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $reservation_id Reservation Identifier (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\CancelReservationResponse
+     */
+    public function cancelReservation(AccessToken $accessToken, string $region, $reservation_id, $marketplace_ids)
+    {
+        $request = $this->cancelReservationRequest($accessToken, $region, $reservation_id, $marketplace_ids);
+
+        $this->configuration->extensions()->preRequest('Services', 'cancelReservation', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'cancelReservation')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'cancelReservation'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'cancelReservation',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'cancelReservation', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'cancelReservation')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'cancelReservation'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'cancelReservation',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\CancelReservationResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'cancelReservation'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $reservation_id Reservation Identifier (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function cancelReservationRequest(AccessToken $accessToken, string $region, $reservation_id, $marketplace_ids) : RequestInterface
+    {
+        // verify the required parameter 'reservation_id' is set
+        if ($reservation_id === null || (is_array($reservation_id) && count($reservation_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $reservation_id when calling cancelReservation'
+            );
+        }
+        if (strlen($reservation_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$reservation_id" when calling ServiceApi.cancelReservation, must be smaller than or equal to 100.');
+        }
+        if (strlen($reservation_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$reservation_id" when calling ServiceApi.cancelReservation, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'marketplace_ids' is set
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $marketplace_ids when calling cancelReservation'
+            );
+        }
+        if (count($marketplace_ids) > 1) {
+            throw new InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.cancelReservation, number of items must be less than or equal to 1.');
+        }
+
+
+        $resourcePath = '/service/v1/reservation/{reservationId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        if ($marketplace_ids instanceof \DateTimeInterface) {
+            $marketplace_ids = ObjectSerializer::toString($marketplace_ids);
+        }
+        if (is_array($marketplace_ids)) {
+            $marketplace_ids = ObjectSerializer::serializeCollection($marketplace_ids, 'form', true);
+        }
+        if ($marketplace_ids !== null) {
+            $queryParams['marketplaceIds'] = $marketplace_ids;
+        }
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+        // path params
+        if ($reservation_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'reservationId' . '}',
+                ObjectSerializer::toPathValue($reservation_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'DELETE',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
      * Operation cancelServiceJobByServiceJobId
      *
      * @param AccessToken $accessToken
@@ -287,7 +785,7 @@ final class ServicesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Services\CancelServiceJobByServiceJobIdResponse
      */
-    public function cancelServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id, $cancellation_reason_code): \MehrIt\AmazonSellingPartner\Model\Services\CancelServiceJobByServiceJobIdResponse
+    public function cancelServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id, $cancellation_reason_code)
     {
         $request = $this->cancelServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id, $cancellation_reason_code);
 
@@ -516,7 +1014,7 @@ final class ServicesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Services\CompleteServiceJobByServiceJobIdResponse
      */
-    public function completeServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id): \MehrIt\AmazonSellingPartner\Model\Services\CompleteServiceJobByServiceJobIdResponse
+    public function completeServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id)
     {
         $request = $this->completeServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id);
 
@@ -708,6 +1206,1438 @@ final class ServicesSDK
     }
 
     /**
+     * Operation createReservation
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\CreateReservationRequest $body Reservation details (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\CreateReservationResponse
+     */
+    public function createReservation(AccessToken $accessToken, string $region, $marketplace_ids, $body)
+    {
+        $request = $this->createReservationRequest($accessToken, $region, $marketplace_ids, $body);
+
+        $this->configuration->extensions()->preRequest('Services', 'createReservation', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'createReservation')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'createReservation'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'createReservation',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'createReservation', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'createReservation')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'createReservation'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'createReservation',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\CreateReservationResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'createReservation'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\CreateReservationRequest $body Reservation details (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function createReservationRequest(AccessToken $accessToken, string $region, $marketplace_ids, $body) : RequestInterface
+    {
+        // verify the required parameter 'marketplace_ids' is set
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $marketplace_ids when calling createReservation'
+            );
+        }
+        if (count($marketplace_ids) > 1) {
+            throw new InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.createReservation, number of items must be less than or equal to 1.');
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling createReservation'
+            );
+        }
+
+        $resourcePath = '/service/v1/reservation';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        if ($marketplace_ids instanceof \DateTimeInterface) {
+            $marketplace_ids = ObjectSerializer::toString($marketplace_ids);
+        }
+        if (is_array($marketplace_ids)) {
+            $marketplace_ids = ObjectSerializer::serializeCollection($marketplace_ids, 'form', true);
+        }
+        if ($marketplace_ids !== null) {
+            $queryParams['marketplaceIds'] = $marketplace_ids;
+        }
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'POST',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation createServiceDocumentUploadDestination
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\ServiceUploadDocument $body Upload document operation input details. (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\CreateServiceDocumentUploadDestination
+     */
+    public function createServiceDocumentUploadDestination(AccessToken $accessToken, string $region, $body)
+    {
+        $request = $this->createServiceDocumentUploadDestinationRequest($accessToken, $region, $body);
+
+        $this->configuration->extensions()->preRequest('Services', 'createServiceDocumentUploadDestination', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'createServiceDocumentUploadDestination')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'createServiceDocumentUploadDestination'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'createServiceDocumentUploadDestination',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'createServiceDocumentUploadDestination', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'createServiceDocumentUploadDestination')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'createServiceDocumentUploadDestination'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'createServiceDocumentUploadDestination',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\CreateServiceDocumentUploadDestination::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'createServiceDocumentUploadDestination'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\ServiceUploadDocument $body Upload document operation input details. (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function createServiceDocumentUploadDestinationRequest(AccessToken $accessToken, string $region, $body) : RequestInterface
+    {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling createServiceDocumentUploadDestination'
+            );
+        }
+
+        $resourcePath = '/service/v1/documents';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'POST',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation getAppointmentSlots
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $asin ASIN associated with the service. (required)
+     * @param string $store_id Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace for which appointment slots are queried (required)
+     * @param string $start_time A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param string $end_time A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\GetAppointmentSlotsResponse
+     */
+    public function getAppointmentSlots(AccessToken $accessToken, string $region, $asin, $store_id, $marketplace_ids, $start_time = null, $end_time = null)
+    {
+        $request = $this->getAppointmentSlotsRequest($accessToken, $region, $asin, $store_id, $marketplace_ids, $start_time, $end_time);
+
+        $this->configuration->extensions()->preRequest('Services', 'getAppointmentSlots', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'getAppointmentSlots')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'getAppointmentSlots'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'getAppointmentSlots',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'getAppointmentSlots', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'getAppointmentSlots')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'getAppointmentSlots'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'getAppointmentSlots',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\GetAppointmentSlotsResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'getAppointmentSlots'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $asin ASIN associated with the service. (required)
+     * @param string $store_id Store identifier defining the region scope to retrive appointment slots. (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace for which appointment slots are queried (required)
+     * @param string $start_time A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param string $end_time A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getAppointmentSlotsRequest(AccessToken $accessToken, string $region, $asin, $store_id, $marketplace_ids, $start_time = null, $end_time = null) : RequestInterface
+    {
+        // verify the required parameter 'asin' is set
+        if ($asin === null || (is_array($asin) && count($asin) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $asin when calling getAppointmentSlots'
+            );
+        }
+        // verify the required parameter 'store_id' is set
+        if ($store_id === null || (is_array($store_id) && count($store_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $store_id when calling getAppointmentSlots'
+            );
+        }
+        if (strlen($store_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$store_id" when calling ServiceApi.getAppointmentSlots, must be smaller than or equal to 100.');
+        }
+        if (strlen($store_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$store_id" when calling ServiceApi.getAppointmentSlots, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'marketplace_ids' is set
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $marketplace_ids when calling getAppointmentSlots'
+            );
+        }
+        if (count($marketplace_ids) > 1) {
+            throw new InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.getAppointmentSlots, number of items must be less than or equal to 1.');
+        }
+
+
+        $resourcePath = '/service/v1/appointmentSlots';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        if ($asin instanceof \DateTimeInterface) {
+            $asin = ObjectSerializer::toString($asin);
+        }
+        if (is_array($asin)) {
+            $asin = ObjectSerializer::serializeCollection($asin, '', true);
+        }
+        if ($asin !== null) {
+            $queryParams['asin'] = $asin;
+        }
+        // query params
+        if ($store_id instanceof \DateTimeInterface) {
+            $store_id = ObjectSerializer::toString($store_id);
+        }
+        if (is_array($store_id)) {
+            $store_id = ObjectSerializer::serializeCollection($store_id, '', true);
+        }
+        if ($store_id !== null) {
+            $queryParams['storeId'] = $store_id;
+        }
+        // query params
+        if ($marketplace_ids instanceof \DateTimeInterface) {
+            $marketplace_ids = ObjectSerializer::toString($marketplace_ids);
+        }
+        if (is_array($marketplace_ids)) {
+            $marketplace_ids = ObjectSerializer::serializeCollection($marketplace_ids, 'form', true);
+        }
+        if ($marketplace_ids !== null) {
+            $queryParams['marketplaceIds'] = $marketplace_ids;
+        }
+        // query params
+        if ($start_time instanceof \DateTimeInterface) {
+            $start_time = ObjectSerializer::toString($start_time);
+        }
+        if (is_array($start_time)) {
+            $start_time = ObjectSerializer::serializeCollection($start_time, '', true);
+        }
+        if ($start_time !== null) {
+            $queryParams['startTime'] = $start_time;
+        }
+        // query params
+        if ($end_time instanceof \DateTimeInterface) {
+            $end_time = ObjectSerializer::toString($end_time);
+        }
+        if (is_array($end_time)) {
+            $end_time = ObjectSerializer::serializeCollection($end_time, '', true);
+        }
+        if ($end_time !== null) {
+            $queryParams['endTime'] = $end_time;
+        }
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'GET',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation getAppointmmentSlotsByJobId
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $service_job_id A service job identifier to retrive appointment slots for associated service. (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param string $start_time A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param string $end_time A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\GetAppointmentSlotsResponse
+     */
+    public function getAppointmmentSlotsByJobId(AccessToken $accessToken, string $region, $service_job_id, $marketplace_ids, $start_time = null, $end_time = null)
+    {
+        $request = $this->getAppointmmentSlotsByJobIdRequest($accessToken, $region, $service_job_id, $marketplace_ids, $start_time, $end_time);
+
+        $this->configuration->extensions()->preRequest('Services', 'getAppointmmentSlotsByJobId', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'getAppointmmentSlotsByJobId')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'getAppointmmentSlotsByJobId'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'getAppointmmentSlotsByJobId',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'getAppointmmentSlotsByJobId', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'getAppointmmentSlotsByJobId')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'getAppointmmentSlotsByJobId'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'getAppointmmentSlotsByJobId',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\GetAppointmentSlotsResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'getAppointmmentSlotsByJobId'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $service_job_id A service job identifier to retrive appointment slots for associated service. (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param string $start_time A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration. (optional)
+     * @param string $end_time A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getAppointmmentSlotsByJobIdRequest(AccessToken $accessToken, string $region, $service_job_id, $marketplace_ids, $start_time = null, $end_time = null) : RequestInterface
+    {
+        // verify the required parameter 'service_job_id' is set
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $service_job_id when calling getAppointmmentSlotsByJobId'
+            );
+        }
+        if (strlen($service_job_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$service_job_id" when calling ServiceApi.getAppointmmentSlotsByJobId, must be smaller than or equal to 100.');
+        }
+        if (strlen($service_job_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$service_job_id" when calling ServiceApi.getAppointmmentSlotsByJobId, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'marketplace_ids' is set
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $marketplace_ids when calling getAppointmmentSlotsByJobId'
+            );
+        }
+        if (count($marketplace_ids) > 1) {
+            throw new InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.getAppointmmentSlotsByJobId, number of items must be less than or equal to 1.');
+        }
+
+
+        $resourcePath = '/service/v1/serviceJobs/{serviceJobId}/appointmentSlots';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        if ($marketplace_ids instanceof \DateTimeInterface) {
+            $marketplace_ids = ObjectSerializer::toString($marketplace_ids);
+        }
+        if (is_array($marketplace_ids)) {
+            $marketplace_ids = ObjectSerializer::serializeCollection($marketplace_ids, 'form', true);
+        }
+        if ($marketplace_ids !== null) {
+            $queryParams['marketplaceIds'] = $marketplace_ids;
+        }
+        // query params
+        if ($start_time instanceof \DateTimeInterface) {
+            $start_time = ObjectSerializer::toString($start_time);
+        }
+        if (is_array($start_time)) {
+            $start_time = ObjectSerializer::serializeCollection($start_time, '', true);
+        }
+        if ($start_time !== null) {
+            $queryParams['startTime'] = $start_time;
+        }
+        // query params
+        if ($end_time instanceof \DateTimeInterface) {
+            $end_time = ObjectSerializer::toString($end_time);
+        }
+        if (is_array($end_time)) {
+            $end_time = ObjectSerializer::serializeCollection($end_time, '', true);
+        }
+        if ($end_time !== null) {
+            $queryParams['endTime'] = $end_time;
+        }
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+        // path params
+        if ($service_job_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'serviceJobId' . '}',
+                ObjectSerializer::toPathValue($service_job_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'GET',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation getFixedSlotCapacity
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $resource_id Resource Identifier. (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\FixedSlotCapacityQuery $body Request body. (required)
+     * @param string $next_page_token Next page token returned in the response of your previous request. (optional)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\FixedSlotCapacity
+     */
+    public function getFixedSlotCapacity(AccessToken $accessToken, string $region, $resource_id, $marketplace_ids, $body, $next_page_token = null)
+    {
+        $request = $this->getFixedSlotCapacityRequest($accessToken, $region, $resource_id, $marketplace_ids, $body, $next_page_token);
+
+        $this->configuration->extensions()->preRequest('Services', 'getFixedSlotCapacity', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'getFixedSlotCapacity')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'getFixedSlotCapacity'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'getFixedSlotCapacity',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'getFixedSlotCapacity', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'getFixedSlotCapacity')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'getFixedSlotCapacity'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'getFixedSlotCapacity',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\FixedSlotCapacity::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'getFixedSlotCapacity'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $resource_id Resource Identifier. (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\FixedSlotCapacityQuery $body Request body. (required)
+     * @param string $next_page_token Next page token returned in the response of your previous request. (optional)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getFixedSlotCapacityRequest(AccessToken $accessToken, string $region, $resource_id, $marketplace_ids, $body, $next_page_token = null) : RequestInterface
+    {
+        // verify the required parameter 'resource_id' is set
+        if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $resource_id when calling getFixedSlotCapacity'
+            );
+        }
+        if (strlen($resource_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$resource_id" when calling ServiceApi.getFixedSlotCapacity, must be smaller than or equal to 100.');
+        }
+        if (strlen($resource_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$resource_id" when calling ServiceApi.getFixedSlotCapacity, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'marketplace_ids' is set
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $marketplace_ids when calling getFixedSlotCapacity'
+            );
+        }
+        if (count($marketplace_ids) > 1) {
+            throw new InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.getFixedSlotCapacity, number of items must be less than or equal to 1.');
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling getFixedSlotCapacity'
+            );
+        }
+
+        $resourcePath = '/service/v1/serviceResources/{resourceId}/capacity/fixed';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        if ($marketplace_ids instanceof \DateTimeInterface) {
+            $marketplace_ids = ObjectSerializer::toString($marketplace_ids);
+        }
+        if (is_array($marketplace_ids)) {
+            $marketplace_ids = ObjectSerializer::serializeCollection($marketplace_ids, 'form', true);
+        }
+        if ($marketplace_ids !== null) {
+            $queryParams['marketplaceIds'] = $marketplace_ids;
+        }
+        // query params
+        if ($next_page_token instanceof \DateTimeInterface) {
+            $next_page_token = ObjectSerializer::toString($next_page_token);
+        }
+        if (is_array($next_page_token)) {
+            $next_page_token = ObjectSerializer::serializeCollection($next_page_token, '', true);
+        }
+        if ($next_page_token !== null) {
+            $queryParams['nextPageToken'] = $next_page_token;
+        }
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+        // path params
+        if ($resource_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'resourceId' . '}',
+                ObjectSerializer::toPathValue($resource_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'POST',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation getRangeSlotCapacity
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $resource_id Resource Identifier. (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\RangeSlotCapacityQuery $body Request body. (required)
+     * @param string $next_page_token Next page token returned in the response of your previous request. (optional)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\RangeSlotCapacity
+     */
+    public function getRangeSlotCapacity(AccessToken $accessToken, string $region, $resource_id, $marketplace_ids, $body, $next_page_token = null)
+    {
+        $request = $this->getRangeSlotCapacityRequest($accessToken, $region, $resource_id, $marketplace_ids, $body, $next_page_token);
+
+        $this->configuration->extensions()->preRequest('Services', 'getRangeSlotCapacity', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'getRangeSlotCapacity')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'getRangeSlotCapacity'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'getRangeSlotCapacity',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'getRangeSlotCapacity', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'getRangeSlotCapacity')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'getRangeSlotCapacity'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'getRangeSlotCapacity',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\RangeSlotCapacity::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'getRangeSlotCapacity'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $resource_id Resource Identifier. (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\RangeSlotCapacityQuery $body Request body. (required)
+     * @param string $next_page_token Next page token returned in the response of your previous request. (optional)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getRangeSlotCapacityRequest(AccessToken $accessToken, string $region, $resource_id, $marketplace_ids, $body, $next_page_token = null) : RequestInterface
+    {
+        // verify the required parameter 'resource_id' is set
+        if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $resource_id when calling getRangeSlotCapacity'
+            );
+        }
+        if (strlen($resource_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$resource_id" when calling ServiceApi.getRangeSlotCapacity, must be smaller than or equal to 100.');
+        }
+        if (strlen($resource_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$resource_id" when calling ServiceApi.getRangeSlotCapacity, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'marketplace_ids' is set
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $marketplace_ids when calling getRangeSlotCapacity'
+            );
+        }
+        if (count($marketplace_ids) > 1) {
+            throw new InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.getRangeSlotCapacity, number of items must be less than or equal to 1.');
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling getRangeSlotCapacity'
+            );
+        }
+
+        $resourcePath = '/service/v1/serviceResources/{resourceId}/capacity/range';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        if ($marketplace_ids instanceof \DateTimeInterface) {
+            $marketplace_ids = ObjectSerializer::toString($marketplace_ids);
+        }
+        if (is_array($marketplace_ids)) {
+            $marketplace_ids = ObjectSerializer::serializeCollection($marketplace_ids, 'form', true);
+        }
+        if ($marketplace_ids !== null) {
+            $queryParams['marketplaceIds'] = $marketplace_ids;
+        }
+        // query params
+        if ($next_page_token instanceof \DateTimeInterface) {
+            $next_page_token = ObjectSerializer::toString($next_page_token);
+        }
+        if (is_array($next_page_token)) {
+            $next_page_token = ObjectSerializer::serializeCollection($next_page_token, '', true);
+        }
+        if ($next_page_token !== null) {
+            $queryParams['nextPageToken'] = $next_page_token;
+        }
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+        // path params
+        if ($resource_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'resourceId' . '}',
+                ObjectSerializer::toPathValue($resource_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'POST',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
      * Operation getServiceJobByServiceJobId
      *
      * @param AccessToken $accessToken
@@ -718,7 +2648,7 @@ final class ServicesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Services\GetServiceJobByServiceJobIdResponse
      */
-    public function getServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id): \MehrIt\AmazonSellingPartner\Model\Services\GetServiceJobByServiceJobIdResponse
+    public function getServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id)
     {
         $request = $this->getServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id);
 
@@ -921,20 +2851,23 @@ final class ServicesSDK
      * @param int $page_size A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
      * @param string $sort_field Sort fields on which you want to sort the output. (optional)
      * @param string $sort_order Sort order for the query you want to perform. (optional)
-     * @param string $created_after A date used for selecting jobs created after (or at) a specified time must be in ISO 8601 format. Required if LastUpdatedAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error. (optional)
-     * @param string $created_before A date used for selecting jobs created before (or at) a specified time must be in ISO 8601 format. (optional)
-     * @param string $last_updated_after A date used for selecting jobs updated after (or at) a specified time must be in ISO 8601 format. Required if createdAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error. (optional)
-     * @param string $last_updated_before A date used for selecting jobs updated before (or at) a specified time must be in ISO 8601 format. (optional)
-     * @param string $schedule_start_date A date used for filtering jobs schedule after (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date. (optional)
-     * @param string $schedule_end_date A date used for filtering jobs schedule before (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date. (optional)
+     * @param string $created_after A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param string $created_before A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param string $last_updated_after A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param string $last_updated_before A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param string $schedule_start_date A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param string $schedule_end_date A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param string[] $asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     * @param string[] $required_skills A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     * @param string[] $store_ids List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Services\GetServiceJobsResponse
      */
-    public function getServiceJobs(AccessToken $accessToken, string $region, $marketplace_ids, $service_order_ids = null, $service_job_status = null, $page_token = null, $page_size = 20, $sort_field = null, $sort_order = null, $created_after = null, $created_before = null, $last_updated_after = null, $last_updated_before = null, $schedule_start_date = null, $schedule_end_date = null): \MehrIt\AmazonSellingPartner\Model\Services\GetServiceJobsResponse
+    public function getServiceJobs(AccessToken $accessToken, string $region, $marketplace_ids, $service_order_ids = null, $service_job_status = null, $page_token = null, $page_size = 20, $sort_field = null, $sort_order = null, $created_after = null, $created_before = null, $last_updated_after = null, $last_updated_before = null, $schedule_start_date = null, $schedule_end_date = null, $asins = null, $required_skills = null, $store_ids = null)
     {
-        $request = $this->getServiceJobsRequest($accessToken, $region, $marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date);
+        $request = $this->getServiceJobsRequest($accessToken, $region, $marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
 
         $this->configuration->extensions()->preRequest('Services', 'getServiceJobs', $request);
 
@@ -1033,17 +2966,20 @@ final class ServicesSDK
      * @param int $page_size A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)
      * @param string $sort_field Sort fields on which you want to sort the output. (optional)
      * @param string $sort_order Sort order for the query you want to perform. (optional)
-     * @param string $created_after A date used for selecting jobs created after (or at) a specified time must be in ISO 8601 format. Required if LastUpdatedAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error. (optional)
-     * @param string $created_before A date used for selecting jobs created before (or at) a specified time must be in ISO 8601 format. (optional)
-     * @param string $last_updated_after A date used for selecting jobs updated after (or at) a specified time must be in ISO 8601 format. Required if createdAfter is not specified.Specifying both CreatedAfter and LastUpdatedAfter returns an error. (optional)
-     * @param string $last_updated_before A date used for selecting jobs updated before (or at) a specified time must be in ISO 8601 format. (optional)
-     * @param string $schedule_start_date A date used for filtering jobs schedule after (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date. (optional)
-     * @param string $schedule_end_date A date used for filtering jobs schedule before (or at) a specified time must be in ISO 8601 format. schedule end date should not be earlier than schedule start date. (optional)
+     * @param string $created_after A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param string $created_before A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param string $last_updated_after A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error. (optional)
+     * @param string $last_updated_before A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format. (optional)
+     * @param string $schedule_start_date A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param string $schedule_end_date A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date. (optional)
+     * @param string[] $asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20. (optional)
+     * @param string[] $required_skills A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)
+     * @param string[] $store_ids List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
-    public function getServiceJobsRequest(AccessToken $accessToken, string $region, $marketplace_ids, $service_order_ids = null, $service_job_status = null, $page_token = null, $page_size = 20, $sort_field = null, $sort_order = null, $created_after = null, $created_before = null, $last_updated_after = null, $last_updated_before = null, $schedule_start_date = null, $schedule_end_date = null) : RequestInterface
+    public function getServiceJobsRequest(AccessToken $accessToken, string $region, $marketplace_ids, $service_order_ids = null, $service_job_status = null, $page_token = null, $page_size = 20, $sort_field = null, $sort_order = null, $created_after = null, $created_before = null, $last_updated_after = null, $last_updated_before = null, $schedule_start_date = null, $schedule_end_date = null, $asins = null, $required_skills = null, $store_ids = null) : RequestInterface
     {
         // verify the required parameter 'marketplace_ids' is set
         if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
@@ -1067,6 +3003,27 @@ final class ServicesSDK
         }
         if ($page_size !== null && $page_size < 1) {
             throw new InvalidArgumentException('invalid value for "$page_size" when calling ServiceApi.getServiceJobs, must be bigger than or equal to 1.');
+        }
+
+        if ($asins !== null && count($asins) > 20) {
+            throw new InvalidArgumentException('invalid value for "$asins" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 20.');
+        }
+        if ($asins !== null && count($asins) < 1) {
+            throw new InvalidArgumentException('invalid value for "$asins" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
+        }
+
+        if ($required_skills !== null && count($required_skills) > 20) {
+            throw new InvalidArgumentException('invalid value for "$required_skills" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 20.');
+        }
+        if ($required_skills !== null && count($required_skills) < 1) {
+            throw new InvalidArgumentException('invalid value for "$required_skills" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
+        }
+
+        if ($store_ids !== null && count($store_ids) > 50) {
+            throw new InvalidArgumentException('invalid value for "$store_ids" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 50.');
+        }
+        if ($store_ids !== null && count($store_ids) < 1) {
+            throw new InvalidArgumentException('invalid value for "$store_ids" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
         }
 
 
@@ -1207,6 +3164,36 @@ final class ServicesSDK
         if ($marketplace_ids !== null) {
             $queryParams['marketplaceIds'] = $marketplace_ids;
         }
+        // query params
+        if ($asins instanceof \DateTimeInterface) {
+            $asins = ObjectSerializer::toString($asins);
+        }
+        if (is_array($asins)) {
+            $asins = ObjectSerializer::serializeCollection($asins, 'form', true);
+        }
+        if ($asins !== null) {
+            $queryParams['asins'] = $asins;
+        }
+        // query params
+        if ($required_skills instanceof \DateTimeInterface) {
+            $required_skills = ObjectSerializer::toString($required_skills);
+        }
+        if (is_array($required_skills)) {
+            $required_skills = ObjectSerializer::serializeCollection($required_skills, 'form', true);
+        }
+        if ($required_skills !== null) {
+            $queryParams['requiredSkills'] = $required_skills;
+        }
+        // query params
+        if ($store_ids instanceof \DateTimeInterface) {
+            $store_ids = ObjectSerializer::toString($store_ids);
+        }
+        if (is_array($store_ids)) {
+            $store_ids = ObjectSerializer::serializeCollection($store_ids, 'form', true);
+        }
+        if ($store_ids !== null) {
+            $queryParams['storeIds'] = $store_ids;
+        }
 
         if (\count($queryParams)) {
             $query = http_build_query($queryParams);
@@ -1281,7 +3268,7 @@ final class ServicesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentResponse
      */
-    public function rescheduleAppointmentForServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id, $appointment_id, $body): \MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentResponse
+    public function rescheduleAppointmentForServiceJobByServiceJobId(AccessToken $accessToken, string $region, $service_job_id, $appointment_id, $body)
     {
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id, $appointment_id, $body);
 
@@ -1465,6 +3452,727 @@ final class ServicesSDK
 
         $request = $this->httpFactory->createRequest(
             'POST',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation setAppointmentFulfillmentData
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $service_job_id An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param string $appointment_id An Amazon-defined identifier of active service job appointment. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentFulfillmentDataRequest $body Appointment fulfillment data collection details. (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return string
+     */
+    public function setAppointmentFulfillmentData(AccessToken $accessToken, string $region, $service_job_id, $appointment_id, $body)
+    {
+        $request = $this->setAppointmentFulfillmentDataRequest($accessToken, $region, $service_job_id, $appointment_id, $body);
+
+        $this->configuration->extensions()->preRequest('Services', 'setAppointmentFulfillmentData', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'setAppointmentFulfillmentData')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'setAppointmentFulfillmentData'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'setAppointmentFulfillmentData',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'setAppointmentFulfillmentData', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'setAppointmentFulfillmentData')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'setAppointmentFulfillmentData'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'setAppointmentFulfillmentData',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            string::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'setAppointmentFulfillmentData'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $service_job_id An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
+     * @param string $appointment_id An Amazon-defined identifier of active service job appointment. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\SetAppointmentFulfillmentDataRequest $body Appointment fulfillment data collection details. (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function setAppointmentFulfillmentDataRequest(AccessToken $accessToken, string $region, $service_job_id, $appointment_id, $body) : RequestInterface
+    {
+        // verify the required parameter 'service_job_id' is set
+        if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $service_job_id when calling setAppointmentFulfillmentData'
+            );
+        }
+        if (strlen($service_job_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$service_job_id" when calling ServiceApi.setAppointmentFulfillmentData, must be smaller than or equal to 100.');
+        }
+        if (strlen($service_job_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$service_job_id" when calling ServiceApi.setAppointmentFulfillmentData, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'appointment_id' is set
+        if ($appointment_id === null || (is_array($appointment_id) && count($appointment_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $appointment_id when calling setAppointmentFulfillmentData'
+            );
+        }
+        if (strlen($appointment_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$appointment_id" when calling ServiceApi.setAppointmentFulfillmentData, must be smaller than or equal to 100.');
+        }
+        if (strlen($appointment_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$appointment_id" when calling ServiceApi.setAppointmentFulfillmentData, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling setAppointmentFulfillmentData'
+            );
+        }
+
+        $resourcePath = '/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+        // path params
+        if ($service_job_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'serviceJobId' . '}',
+                ObjectSerializer::toPathValue($service_job_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($appointment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appointmentId' . '}',
+                ObjectSerializer::toPathValue($appointment_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'PUT',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation updateReservation
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $reservation_id Reservation Identifier (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\UpdateReservationRequest $body Reservation details (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\UpdateReservationResponse
+     */
+    public function updateReservation(AccessToken $accessToken, string $region, $reservation_id, $marketplace_ids, $body)
+    {
+        $request = $this->updateReservationRequest($accessToken, $region, $reservation_id, $marketplace_ids, $body);
+
+        $this->configuration->extensions()->preRequest('Services', 'updateReservation', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'updateReservation')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'updateReservation'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'updateReservation',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'updateReservation', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'updateReservation')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'updateReservation'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'updateReservation',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\UpdateReservationResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'updateReservation'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $reservation_id Reservation Identifier (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\UpdateReservationRequest $body Reservation details (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function updateReservationRequest(AccessToken $accessToken, string $region, $reservation_id, $marketplace_ids, $body) : RequestInterface
+    {
+        // verify the required parameter 'reservation_id' is set
+        if ($reservation_id === null || (is_array($reservation_id) && count($reservation_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $reservation_id when calling updateReservation'
+            );
+        }
+        if (strlen($reservation_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$reservation_id" when calling ServiceApi.updateReservation, must be smaller than or equal to 100.');
+        }
+        if (strlen($reservation_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$reservation_id" when calling ServiceApi.updateReservation, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'marketplace_ids' is set
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $marketplace_ids when calling updateReservation'
+            );
+        }
+        if (count($marketplace_ids) > 1) {
+            throw new InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.updateReservation, number of items must be less than or equal to 1.');
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling updateReservation'
+            );
+        }
+
+        $resourcePath = '/service/v1/reservation/{reservationId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        if ($marketplace_ids instanceof \DateTimeInterface) {
+            $marketplace_ids = ObjectSerializer::toString($marketplace_ids);
+        }
+        if (is_array($marketplace_ids)) {
+            $marketplace_ids = ObjectSerializer::serializeCollection($marketplace_ids, 'form', true);
+        }
+        if ($marketplace_ids !== null) {
+            $queryParams['marketplaceIds'] = $marketplace_ids;
+        }
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+        // path params
+        if ($reservation_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'reservationId' . '}',
+                ObjectSerializer::toPathValue($reservation_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'PUT',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
+     * Operation updateSchedule
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $resource_id Resource (store) Identifier (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\UpdateScheduleRequest $body Schedule details (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\Services\UpdateScheduleResponse
+     */
+    public function updateSchedule(AccessToken $accessToken, string $region, $resource_id, $marketplace_ids, $body)
+    {
+        $request = $this->updateScheduleRequest($accessToken, $region, $resource_id, $marketplace_ids, $body);
+
+        $this->configuration->extensions()->preRequest('Services', 'updateSchedule', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('Services', 'updateSchedule')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'updateSchedule'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'updateSchedule',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Services', 'updateSchedule', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Services', 'updateSchedule')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Services', 'updateSchedule'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Services',
+                        'operation' => 'updateSchedule',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\Services\UpdateScheduleResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'updateSchedule'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param string $resource_id Resource (store) Identifier (required)
+     * @param string[] $marketplace_ids An identifier for the marketplace in which the resource operates. (required)
+     * @param \MehrIt\AmazonSellingPartner\Model\Services\UpdateScheduleRequest $body Schedule details (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function updateScheduleRequest(AccessToken $accessToken, string $region, $resource_id, $marketplace_ids, $body) : RequestInterface
+    {
+        // verify the required parameter 'resource_id' is set
+        if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $resource_id when calling updateSchedule'
+            );
+        }
+        if (strlen($resource_id) > 100) {
+            throw new InvalidArgumentException('invalid length for "$resource_id" when calling ServiceApi.updateSchedule, must be smaller than or equal to 100.');
+        }
+        if (strlen($resource_id) < 1) {
+            throw new InvalidArgumentException('invalid length for "$resource_id" when calling ServiceApi.updateSchedule, must be bigger than or equal to 1.');
+        }
+
+        // verify the required parameter 'marketplace_ids' is set
+        if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $marketplace_ids when calling updateSchedule'
+            );
+        }
+        if (count($marketplace_ids) > 1) {
+            throw new InvalidArgumentException('invalid value for "$marketplace_ids" when calling ServiceApi.updateSchedule, number of items must be less than or equal to 1.');
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $body when calling updateSchedule'
+            );
+        }
+
+        $resourcePath = '/service/v1/serviceResources/{resourceId}/schedules';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        if ($marketplace_ids instanceof \DateTimeInterface) {
+            $marketplace_ids = ObjectSerializer::toString($marketplace_ids);
+        }
+        if (is_array($marketplace_ids)) {
+            $marketplace_ids = ObjectSerializer::serializeCollection($marketplace_ids, 'form', true);
+        }
+        if ($marketplace_ids !== null) {
+            $queryParams['marketplaceIds'] = $marketplace_ids;
+        }
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+        // path params
+        if ($resource_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'resourceId' . '}',
+                ObjectSerializer::toPathValue($resource_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'PUT',
             $this->configuration->apiURL($region) . $resourcePath . '?' . $query
         );
 

@@ -56,7 +56,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\Shipment
      */
-    public function getShipment(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\Shipment
+    public function getShipment(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->getShipmentRequest($accessToken, $region, $shipment_id);
 
@@ -256,7 +256,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipmentsResponse
      */
-    public function getShipments(AccessToken $accessToken, string $region, $location_id, $status, $last_updated_after = null, $last_updated_before = null, $max_results = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipmentsResponse
+    public function getShipments(AccessToken $accessToken, string $region, $location_id, $status, $last_updated_after = null, $last_updated_before = null, $max_results = null, $next_token = null)
     {
         $request = $this->getShipmentsRequest($accessToken, $region, $location_id, $status, $last_updated_after, $last_updated_before, $max_results, $next_token);
 

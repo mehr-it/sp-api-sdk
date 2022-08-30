@@ -62,7 +62,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetPackingSlipResponse
      */
-    public function getPackingSlip(AccessToken $accessToken, string $region, $purchase_order_number): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetPackingSlipResponse
+    public function getPackingSlip(AccessToken $accessToken, string $region, $purchase_order_number)
     {
         $request = $this->getPackingSlipRequest($accessToken, $region, $purchase_order_number);
 
@@ -266,7 +266,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetPackingSlipListResponse
      */
-    public function getPackingSlips(AccessToken $accessToken, string $region, $created_after, $created_before, $ship_from_party_id = null, $limit = null, $sort_order = 'ASC', $next_token = null): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetPackingSlipListResponse
+    public function getPackingSlips(AccessToken $accessToken, string $region, $created_after, $created_before, $ship_from_party_id = null, $limit = null, $sort_order = 'ASC', $next_token = null)
     {
         $request = $this->getPackingSlipsRequest($accessToken, $region, $created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
 
@@ -531,7 +531,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShipmentConfirmationsResponse
      */
-    public function submitShipmentConfirmations(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShipmentConfirmationsResponse
+    public function submitShipmentConfirmations(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->submitShipmentConfirmationsRequest($accessToken, $region, $body);
 
@@ -726,7 +726,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShipmentStatusUpdatesResponse
      */
-    public function submitShipmentStatusUpdates(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShipmentStatusUpdatesResponse
+    public function submitShipmentStatusUpdates(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->submitShipmentStatusUpdatesRequest($accessToken, $region, $body);
 

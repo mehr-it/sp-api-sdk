@@ -56,7 +56,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetCustomerInvoiceResponse
      */
-    public function getCustomerInvoice(AccessToken $accessToken, string $region, $purchase_order_number): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetCustomerInvoiceResponse
+    public function getCustomerInvoice(AccessToken $accessToken, string $region, $purchase_order_number)
     {
         $request = $this->getCustomerInvoiceRequest($accessToken, $region, $purchase_order_number);
 
@@ -260,7 +260,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetCustomerInvoicesResponse
      */
-    public function getCustomerInvoices(AccessToken $accessToken, string $region, $created_after, $created_before, $ship_from_party_id = null, $limit = null, $sort_order = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentShipping\GetCustomerInvoicesResponse
+    public function getCustomerInvoices(AccessToken $accessToken, string $region, $created_after, $created_before, $ship_from_party_id = null, $limit = null, $sort_order = null, $next_token = null)
     {
         $request = $this->getCustomerInvoicesRequest($accessToken, $region, $created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
 

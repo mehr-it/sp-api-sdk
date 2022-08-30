@@ -59,7 +59,7 @@ final class CatalogItemSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\CatalogItem\Item
      */
-    public function getCatalogItem(AccessToken $accessToken, string $region, $asin, $marketplace_ids, $included_data = null, $locale = null): \MehrIt\AmazonSellingPartner\Model\CatalogItem\Item
+    public function getCatalogItem(AccessToken $accessToken, string $region, $asin, $marketplace_ids, $included_data = null, $locale = null)
     {
         $request = $this->getCatalogItemRequest($accessToken, $region, $asin, $marketplace_ids, $included_data, $locale);
 
@@ -301,7 +301,7 @@ final class CatalogItemSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\CatalogItem\ItemSearchResults
      */
-    public function searchCatalogItems(AccessToken $accessToken, string $region, $keywords, $marketplace_ids, $included_data = null, $brand_names = null, $classification_ids = null, $page_size = 10, $page_token = null, $keywords_locale = null, $locale = null): \MehrIt\AmazonSellingPartner\Model\CatalogItem\ItemSearchResults
+    public function searchCatalogItems(AccessToken $accessToken, string $region, $keywords, $marketplace_ids, $included_data = null, $brand_names = null, $classification_ids = null, $page_size = 10, $page_token = null, $keywords_locale = null, $locale = null)
     {
         $request = $this->searchCatalogItemsRequest($accessToken, $region, $keywords, $marketplace_ids, $included_data, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale, $locale);
 

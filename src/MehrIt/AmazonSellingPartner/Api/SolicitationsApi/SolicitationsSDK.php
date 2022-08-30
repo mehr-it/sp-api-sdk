@@ -57,7 +57,7 @@ final class SolicitationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Solicitations\CreateProductReviewAndSellerFeedbackSolicitationResponse
      */
-    public function createProductReviewAndSellerFeedbackSolicitation(AccessToken $accessToken, string $region, $amazon_order_id, $marketplace_ids): \MehrIt\AmazonSellingPartner\Model\Solicitations\CreateProductReviewAndSellerFeedbackSolicitationResponse
+    public function createProductReviewAndSellerFeedbackSolicitation(AccessToken $accessToken, string $region, $amazon_order_id, $marketplace_ids)
     {
         $request = $this->createProductReviewAndSellerFeedbackSolicitationRequest($accessToken, $region, $amazon_order_id, $marketplace_ids);
 
@@ -274,7 +274,7 @@ final class SolicitationsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Solicitations\GetSolicitationActionsForOrderResponse
      */
-    public function getSolicitationActionsForOrder(AccessToken $accessToken, string $region, $amazon_order_id, $marketplace_ids): \MehrIt\AmazonSellingPartner\Model\Solicitations\GetSolicitationActionsForOrderResponse
+    public function getSolicitationActionsForOrder(AccessToken $accessToken, string $region, $amazon_order_id, $marketplace_ids)
     {
         $request = $this->getSolicitationActionsForOrderRequest($accessToken, $region, $amazon_order_id, $marketplace_ids);
 

@@ -59,7 +59,7 @@ final class VendorDirectFulfillmentOrdersSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\GetOrderResponse
      */
-    public function getOrder(AccessToken $accessToken, string $region, $purchase_order_number): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\GetOrderResponse
+    public function getOrder(AccessToken $accessToken, string $region, $purchase_order_number)
     {
         $request = $this->getOrderRequest($accessToken, $region, $purchase_order_number);
 
@@ -261,7 +261,7 @@ final class VendorDirectFulfillmentOrdersSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\GetOrdersResponse
      */
-    public function getOrders(AccessToken $accessToken, string $region, $created_after, $created_before, $ship_from_party_id = null, $status = null, $limit = null, $sort_order = null, $next_token = null, $include_details = 'true'): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\GetOrdersResponse
+    public function getOrders(AccessToken $accessToken, string $region, $created_after, $created_before, $ship_from_party_id = null, $status = null, $limit = null, $sort_order = null, $next_token = null, $include_details = 'true')
     {
         $request = $this->getOrdersRequest($accessToken, $region, $created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details);
 
@@ -548,7 +548,7 @@ final class VendorDirectFulfillmentOrdersSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\SubmitAcknowledgementResponse
      */
-    public function submitAcknowledgement(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentOrders\SubmitAcknowledgementResponse
+    public function submitAcknowledgement(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->submitAcknowledgementRequest($accessToken, $region, $body);
 

@@ -53,7 +53,7 @@ final class VendorTransactionStatusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorTransactionStatus\GetTransactionResponse
      */
-    public function getTransaction(AccessToken $accessToken, string $region, $transaction_id): \MehrIt\AmazonSellingPartner\Model\VendorTransactionStatus\GetTransactionResponse
+    public function getTransaction(AccessToken $accessToken, string $region, $transaction_id)
     {
         $request = $this->getTransactionRequest($accessToken, $region, $transaction_id);
 

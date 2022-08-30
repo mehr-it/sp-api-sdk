@@ -54,7 +54,7 @@ final class VendorDirectFulfillmentInventorySDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentInventory\SubmitInventoryUpdateResponse
      */
-    public function submitInventoryUpdate(AccessToken $accessToken, string $region, $warehouse_id, $body): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentInventory\SubmitInventoryUpdateResponse
+    public function submitInventoryUpdate(AccessToken $accessToken, string $region, $warehouse_id, $body)
     {
         $request = $this->submitInventoryUpdateRequest($accessToken, $region, $warehouse_id, $body);
 

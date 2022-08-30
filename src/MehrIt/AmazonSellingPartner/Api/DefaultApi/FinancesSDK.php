@@ -65,7 +65,7 @@ final class FinancesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Finances\ListFinancialEventGroupsResponse
      */
-    public function listFinancialEventGroups(AccessToken $accessToken, string $region, $max_results_per_page = 100, $financial_event_group_started_before = null, $financial_event_group_started_after = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\Finances\ListFinancialEventGroupsResponse
+    public function listFinancialEventGroups(AccessToken $accessToken, string $region, $max_results_per_page = 100, $financial_event_group_started_before = null, $financial_event_group_started_after = null, $next_token = null)
     {
         $request = $this->listFinancialEventGroupsRequest($accessToken, $region, $max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
 
@@ -299,7 +299,7 @@ final class FinancesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Finances\ListFinancialEventsResponse
      */
-    public function listFinancialEvents(AccessToken $accessToken, string $region, $max_results_per_page = 100, $posted_after = null, $posted_before = null, $next_token = null): \MehrIt\AmazonSellingPartner\Model\Finances\ListFinancialEventsResponse
+    public function listFinancialEvents(AccessToken $accessToken, string $region, $max_results_per_page = 100, $posted_after = null, $posted_before = null, $next_token = null)
     {
         $request = $this->listFinancialEventsRequest($accessToken, $region, $max_results_per_page, $posted_after, $posted_before, $next_token);
 
@@ -532,7 +532,7 @@ final class FinancesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Finances\ListFinancialEventsResponse
      */
-    public function listFinancialEventsByGroupId(AccessToken $accessToken, string $region, $event_group_id, $max_results_per_page = 100, $next_token = null): \MehrIt\AmazonSellingPartner\Model\Finances\ListFinancialEventsResponse
+    public function listFinancialEventsByGroupId(AccessToken $accessToken, string $region, $event_group_id, $max_results_per_page = 100, $next_token = null)
     {
         $request = $this->listFinancialEventsByGroupIdRequest($accessToken, $region, $event_group_id, $max_results_per_page, $next_token);
 
@@ -758,7 +758,7 @@ final class FinancesSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Finances\ListFinancialEventsResponse
      */
-    public function listFinancialEventsByOrderId(AccessToken $accessToken, string $region, $order_id, $max_results_per_page = 100, $next_token = null): \MehrIt\AmazonSellingPartner\Model\Finances\ListFinancialEventsResponse
+    public function listFinancialEventsByOrderId(AccessToken $accessToken, string $region, $order_id, $max_results_per_page = 100, $next_token = null)
     {
         $request = $this->listFinancialEventsByOrderIdRequest($accessToken, $region, $order_id, $max_results_per_page, $next_token);
 

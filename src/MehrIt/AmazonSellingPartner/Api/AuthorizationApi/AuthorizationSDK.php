@@ -57,7 +57,7 @@ final class AuthorizationSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\Authorization\GetAuthorizationCodeResponse
      */
-    public function getAuthorizationCode(AccessToken $accessToken, string $region, $selling_partner_id, $developer_id, $mws_auth_token): \MehrIt\AmazonSellingPartner\Model\Authorization\GetAuthorizationCodeResponse
+    public function getAuthorizationCode(AccessToken $accessToken, string $region, $selling_partner_id, $developer_id, $mws_auth_token)
     {
         $request = $this->getAuthorizationCodeRequest($accessToken, $region, $selling_partner_id, $developer_id, $mws_auth_token);
 

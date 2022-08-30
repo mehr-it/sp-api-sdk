@@ -28,9 +28,15 @@ final class ProductPricingSDK
     public const OPERATION_GETITEMOFFERS = 'getItemOffers';
 
     public const OPERATION_GETITEMOFFERS_PATH = '/products/pricing/v0/items/{Asin}/offers';
+    public const OPERATION_GETITEMOFFERSBATCH = 'getItemOffersBatch';
+
+    public const OPERATION_GETITEMOFFERSBATCH_PATH = '/batches/products/pricing/v0/itemOffers';
     public const OPERATION_GETLISTINGOFFERS = 'getListingOffers';
 
     public const OPERATION_GETLISTINGOFFERS_PATH = '/products/pricing/v0/listings/{SellerSKU}/offers';
+    public const OPERATION_GETLISTINGOFFERSBATCH = 'getListingOffersBatch';
+
+    public const OPERATION_GETLISTINGOFFERSBATCH_PATH = '/batches/products/pricing/v0/listingOffers';
     public const OPERATION_GETPRICING = 'getPricing';
 
     public const OPERATION_GETPRICING_PATH = '/products/pricing/v0/price';
@@ -66,7 +72,7 @@ final class ProductPricingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetPricingResponse
      */
-    public function getCompetitivePricing(AccessToken $accessToken, string $region, $marketplace_id, $item_type, $asins = null, $skus = null, $customer_type = null): \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetPricingResponse
+    public function getCompetitivePricing(AccessToken $accessToken, string $region, $marketplace_id, $item_type, $asins = null, $skus = null, $customer_type = null)
     {
         $request = $this->getCompetitivePricingRequest($accessToken, $region, $marketplace_id, $item_type, $asins, $skus, $customer_type);
 
@@ -324,7 +330,7 @@ final class ProductPricingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetOffersResponse
      */
-    public function getItemOffers(AccessToken $accessToken, string $region, $marketplace_id, $item_condition, $asin, $customer_type = null): \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetOffersResponse
+    public function getItemOffers(AccessToken $accessToken, string $region, $marketplace_id, $item_condition, $asin, $customer_type = null)
     {
         $request = $this->getItemOffersRequest($accessToken, $region, $marketplace_id, $item_condition, $asin, $customer_type);
 
@@ -554,6 +560,201 @@ final class ProductPricingSDK
     }
 
     /**
+     * Operation getItemOffersBatch
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetItemOffersBatchRequest $get_item_offers_batch_request_body get_item_offers_batch_request_body (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetItemOffersBatchResponse
+     */
+    public function getItemOffersBatch(AccessToken $accessToken, string $region, $get_item_offers_batch_request_body)
+    {
+        $request = $this->getItemOffersBatchRequest($accessToken, $region, $get_item_offers_batch_request_body);
+
+        $this->configuration->extensions()->preRequest('ProductPricing', 'getItemOffersBatch', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('ProductPricing', 'getItemOffersBatch')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('ProductPricing', 'getItemOffersBatch'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'ProductPricing',
+                        'operation' => 'getItemOffersBatch',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('ProductPricing', 'getItemOffersBatch', $request, $response);
+
+            if ($this->configuration->loggingEnabled('ProductPricing', 'getItemOffersBatch')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('ProductPricing', 'getItemOffersBatch'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'ProductPricing',
+                        'operation' => 'getItemOffersBatch',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetItemOffersBatchResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'getItemOffersBatch'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetItemOffersBatchRequest $get_item_offers_batch_request_body (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getItemOffersBatchRequest(AccessToken $accessToken, string $region, $get_item_offers_batch_request_body) : RequestInterface
+    {
+        // verify the required parameter 'get_item_offers_batch_request_body' is set
+        if ($get_item_offers_batch_request_body === null || (is_array($get_item_offers_batch_request_body) && count($get_item_offers_batch_request_body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $get_item_offers_batch_request_body when calling getItemOffersBatch'
+            );
+        }
+
+        $resourcePath = '/batches/products/pricing/v0/itemOffers';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'POST',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($get_item_offers_batch_request_body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($get_item_offers_batch_request_body));
+            } else {
+                $httpBody = $get_item_offers_batch_request_body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
      * Operation getListingOffers
      *
      * @param AccessToken $accessToken
@@ -567,7 +768,7 @@ final class ProductPricingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetOffersResponse
      */
-    public function getListingOffers(AccessToken $accessToken, string $region, $marketplace_id, $item_condition, $seller_sku, $customer_type = null): \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetOffersResponse
+    public function getListingOffers(AccessToken $accessToken, string $region, $marketplace_id, $item_condition, $seller_sku, $customer_type = null)
     {
         $request = $this->getListingOffersRequest($accessToken, $region, $marketplace_id, $item_condition, $seller_sku, $customer_type);
 
@@ -797,6 +998,201 @@ final class ProductPricingSDK
     }
 
     /**
+     * Operation getListingOffersBatch
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetListingOffersBatchRequest $get_listing_offers_batch_request_body get_listing_offers_batch_request_body (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\ApiException on non-2xx response
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetListingOffersBatchResponse
+     */
+    public function getListingOffersBatch(AccessToken $accessToken, string $region, $get_listing_offers_batch_request_body)
+    {
+        $request = $this->getListingOffersBatchRequest($accessToken, $region, $get_listing_offers_batch_request_body);
+
+        $this->configuration->extensions()->preRequest('ProductPricing', 'getListingOffersBatch', $request);
+
+        try {
+            $correlationId = \uuid_create(UUID_TYPE_RANDOM);
+
+            if ($this->configuration->loggingEnabled('ProductPricing', 'getListingOffersBatch')) {
+
+                $sanitizedRequest = $request;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('ProductPricing', 'getListingOffersBatch'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'ProductPricing',
+                        'operation' => 'getListingOffersBatch',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('ProductPricing', 'getListingOffersBatch', $request, $response);
+
+            if ($this->configuration->loggingEnabled('ProductPricing', 'getListingOffersBatch')) {
+
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('ProductPricing', 'getListingOffersBatch'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'ProductPricing',
+                        'operation' => 'getListingOffersBatch',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetListingOffersBatchResponse::class,
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'getListingOffersBatch'
+     *
+     * @param AccessToken $accessToken
+     * @param string $region
+     * @param \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetListingOffersBatchRequest $get_listing_offers_batch_request_body (required)
+     *
+     * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getListingOffersBatchRequest(AccessToken $accessToken, string $region, $get_listing_offers_batch_request_body) : RequestInterface
+    {
+        // verify the required parameter 'get_listing_offers_batch_request_body' is set
+        if ($get_listing_offers_batch_request_body === null || (is_array($get_listing_offers_batch_request_body) && count($get_listing_offers_batch_request_body) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $get_listing_offers_batch_request_body when calling getListingOffersBatch'
+            );
+        }
+
+        $resourcePath = '/batches/products/pricing/v0/listingOffers';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+
+        if (\count($queryParams)) {
+            $query = http_build_query($queryParams);
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'POST',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (isset($get_listing_offers_batch_request_body)) {
+            if ($headers['content-type'] === ['application/json']) {
+                $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($get_listing_offers_batch_request_body));
+            } else {
+                $httpBody = $get_listing_offers_batch_request_body;
+            }
+
+            $request = $request->withBody($this->httpFactory->createStreamFromString($httpBody));
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+    /**
      * Operation getPricing
      *
      * @param AccessToken $accessToken
@@ -812,7 +1208,7 @@ final class ProductPricingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetPricingResponse
      */
-    public function getPricing(AccessToken $accessToken, string $region, $marketplace_id, $item_type, $asins = null, $skus = null, $item_condition = null, $offer_type = null): \MehrIt\AmazonSellingPartner\Model\ProductPricing\GetPricingResponse
+    public function getPricing(AccessToken $accessToken, string $region, $marketplace_id, $item_type, $asins = null, $skus = null, $item_condition = null, $offer_type = null)
     {
         $request = $this->getPricingRequest($accessToken, $region, $marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
 

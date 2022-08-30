@@ -53,7 +53,7 @@ final class VendorDirectFulfillmentPaymentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentPayments\SubmitInvoiceResponse
      */
-    public function submitInvoice(AccessToken $accessToken, string $region, $body): \MehrIt\AmazonSellingPartner\Model\VendorDirectFulfillmentPayments\SubmitInvoiceResponse
+    public function submitInvoice(AccessToken $accessToken, string $region, $body)
     {
         $request = $this->submitInvoiceRequest($accessToken, $region, $body);
 

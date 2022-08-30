@@ -57,7 +57,7 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'status' => 'string',
+        'status' => '\MehrIt\AmazonSellingPartner\Model\Orders\VerificationStatus',
         'external_reviewer_id' => 'string',
         'rejection_reason_id' => 'string'
     ];
@@ -170,21 +170,6 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const STATUS_APPROVED = 'Approved';
-    const STATUS_REJECTED = 'Rejected';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues() : array
-    {
-        return [
-            self::STATUS_APPROVED,
-            self::STATUS_REJECTED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -218,15 +203,6 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['external_reviewer_id'] === null) {
             $invalidProperties[] = "'external_reviewer_id' can't be null";
         }
@@ -248,7 +224,7 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return string
+     * @return \MehrIt\AmazonSellingPartner\Model\Orders\VerificationStatus
      */
     public function getStatus()
     {
@@ -258,22 +234,12 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status The new verification status of the order.
+     * @param \MehrIt\AmazonSellingPartner\Model\Orders\VerificationStatus $status status
      *
      * @return self
      */
     public function setStatus($status) : self
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['status'] = $status;
 
         return $this;

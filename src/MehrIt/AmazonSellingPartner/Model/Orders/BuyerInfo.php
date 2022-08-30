@@ -264,7 +264,7 @@ class BuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer_name
      *
-     * @param string|null $buyer_name The name of the buyer.
+     * @param string|null $buyer_name The buyer name or the recipient name.
      *
      * @return self
      */

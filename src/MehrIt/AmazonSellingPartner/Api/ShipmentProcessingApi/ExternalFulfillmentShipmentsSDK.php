@@ -78,7 +78,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList
      */
-    public function createPackages(AccessToken $accessToken, string $region, $shipment_id, $body): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList
+    public function createPackages(AccessToken $accessToken, string $region, $shipment_id, $body)
     {
         $request = $this->createPackagesRequest($accessToken, $region, $shipment_id, $body);
 
@@ -289,7 +289,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\InvoiceResponse
      */
-    public function generateInvoice(AccessToken $accessToken, string $region, $shipment_id, $package_id): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\InvoiceResponse
+    public function generateInvoice(AccessToken $accessToken, string $region, $shipment_id, $package_id)
     {
         $request = $this->generateInvoiceRequest($accessToken, $region, $shipment_id, $package_id);
 
@@ -503,7 +503,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipLabelResponse
      */
-    public function generateShipLabel(AccessToken $accessToken, string $region, $shipment_id, $package_id, $operation, $shipping_option_id = null, $body = null): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipLabelResponse
+    public function generateShipLabel(AccessToken $accessToken, string $region, $shipment_id, $package_id, $operation, $shipping_option_id = null, $body = null)
     {
         $request = $this->generateShipLabelRequest($accessToken, $region, $shipment_id, $package_id, $operation, $shipping_option_id, $body);
 
@@ -752,7 +752,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList
      */
-    public function processShipment(AccessToken $accessToken, string $region, $shipment_id, $operation, $body): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList
+    public function processShipment(AccessToken $accessToken, string $region, $shipment_id, $operation, $body)
     {
         $request = $this->processShipmentRequest($accessToken, $region, $shipment_id, $operation, $body);
 
@@ -980,7 +980,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\InvoiceResponse
      */
-    public function retrieveInvoice(AccessToken $accessToken, string $region, $shipment_id, $package_id): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\InvoiceResponse
+    public function retrieveInvoice(AccessToken $accessToken, string $region, $shipment_id, $package_id)
     {
         $request = $this->retrieveInvoiceRequest($accessToken, $region, $shipment_id, $package_id);
 
@@ -1191,7 +1191,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipLabelResponse
      */
-    public function retrieveShipLabel(AccessToken $accessToken, string $region, $shipment_id, $package_id): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShipLabelResponse
+    public function retrieveShipLabel(AccessToken $accessToken, string $region, $shipment_id, $package_id)
     {
         $request = $this->retrieveShipLabelRequest($accessToken, $region, $shipment_id, $package_id);
 
@@ -1402,7 +1402,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShippingOptionsResponse
      */
-    public function retrieveShippingOptions(AccessToken $accessToken, string $region, $shipment_id, $package_id): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ShippingOptionsResponse
+    public function retrieveShippingOptions(AccessToken $accessToken, string $region, $shipment_id, $package_id)
     {
         $request = $this->retrieveShippingOptionsRequest($accessToken, $region, $shipment_id, $package_id);
 
@@ -1618,7 +1618,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList
      */
-    public function updatePackage(AccessToken $accessToken, string $region, $shipment_id, $package_id, $body): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList
+    public function updatePackage(AccessToken $accessToken, string $region, $shipment_id, $package_id, $body)
     {
         $request = $this->updatePackageRequest($accessToken, $region, $shipment_id, $package_id, $body);
 
@@ -1845,7 +1845,7 @@ final class ExternalFulfillmentShipmentsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList
      */
-    public function updatePackageStatus(AccessToken $accessToken, string $region, $shipment_id, $package_id, $status): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentShipments\ErrorList
+    public function updatePackageStatus(AccessToken $accessToken, string $region, $shipment_id, $package_id, $status)
     {
         $request = $this->updatePackageStatusRequest($accessToken, $region, $shipment_id, $package_id, $status);
 

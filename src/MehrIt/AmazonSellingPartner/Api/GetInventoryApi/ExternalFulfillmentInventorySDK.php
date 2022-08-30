@@ -54,7 +54,7 @@ final class ExternalFulfillmentInventorySDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentInventory\InventorySnapshot
      */
-    public function getInventory(AccessToken $accessToken, string $region, $location_id, $sku_id): \MehrIt\AmazonSellingPartner\Model\ExternalFulfillmentInventory\InventorySnapshot
+    public function getInventory(AccessToken $accessToken, string $region, $location_id, $sku_id)
     {
         $request = $this->getInventoryRequest($accessToken, $region, $location_id, $sku_id);
 

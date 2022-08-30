@@ -65,7 +65,7 @@ final class ListingsItemsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse
      */
-    public function deleteListingsItem(AccessToken $accessToken, string $region, $seller_id, $sku, $marketplace_ids, $issue_locale = null): \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse
+    public function deleteListingsItem(AccessToken $accessToken, string $region, $seller_id, $sku, $marketplace_ids, $issue_locale = null)
     {
         $request = $this->deleteListingsItemRequest($accessToken, $region, $seller_id, $sku, $marketplace_ids, $issue_locale);
 
@@ -307,7 +307,7 @@ final class ListingsItemsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ListingsItems\Item
      */
-    public function getListingsItem(AccessToken $accessToken, string $region, $seller_id, $sku, $marketplace_ids, $issue_locale = null, $included_data = null): \MehrIt\AmazonSellingPartner\Model\ListingsItems\Item
+    public function getListingsItem(AccessToken $accessToken, string $region, $seller_id, $sku, $marketplace_ids, $issue_locale = null, $included_data = null)
     {
         $request = $this->getListingsItemRequest($accessToken, $region, $seller_id, $sku, $marketplace_ids, $issue_locale, $included_data);
 
@@ -560,7 +560,7 @@ final class ListingsItemsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse
      */
-    public function patchListingsItem(AccessToken $accessToken, string $region, $seller_id, $sku, $marketplace_ids, $body, $issue_locale = null): \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse
+    public function patchListingsItem(AccessToken $accessToken, string $region, $seller_id, $sku, $marketplace_ids, $body, $issue_locale = null)
     {
         $request = $this->patchListingsItemRequest($accessToken, $region, $seller_id, $sku, $marketplace_ids, $body, $issue_locale);
 
@@ -817,7 +817,7 @@ final class ListingsItemsSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse
      */
-    public function putListingsItem(AccessToken $accessToken, string $region, $seller_id, $sku, $marketplace_ids, $body, $issue_locale = null): \MehrIt\AmazonSellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse
+    public function putListingsItem(AccessToken $accessToken, string $region, $seller_id, $sku, $marketplace_ids, $body, $issue_locale = null)
     {
         $request = $this->putListingsItemRequest($accessToken, $region, $seller_id, $sku, $marketplace_ids, $body, $issue_locale);
 

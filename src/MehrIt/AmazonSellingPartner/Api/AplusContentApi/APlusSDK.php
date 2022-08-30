@@ -81,7 +81,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentResponse
      */
-    public function createContentDocument(AccessToken $accessToken, string $region, $marketplace_id, $post_content_document_request): \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentResponse
+    public function createContentDocument(AccessToken $accessToken, string $region, $marketplace_id, $post_content_document_request)
     {
         $request = $this->createContentDocumentRequest($accessToken, $region, $marketplace_id, $post_content_document_request);
 
@@ -299,7 +299,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\GetContentDocumentResponse
      */
-    public function getContentDocument(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id, $included_data_set): \MehrIt\AmazonSellingPartner\Model\APlus\GetContentDocumentResponse
+    public function getContentDocument(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id, $included_data_set)
     {
         $request = $this->getContentDocumentRequest($accessToken, $region, $content_reference_key, $marketplace_id, $included_data_set);
 
@@ -544,7 +544,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\ListContentDocumentAsinRelationsResponse
      */
-    public function listContentDocumentAsinRelations(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id, $included_data_set = null, $asin_set = null, $page_token = null): \MehrIt\AmazonSellingPartner\Model\APlus\ListContentDocumentAsinRelationsResponse
+    public function listContentDocumentAsinRelations(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id, $included_data_set = null, $asin_set = null, $page_token = null)
     {
         $request = $this->listContentDocumentAsinRelationsRequest($accessToken, $region, $content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token);
 
@@ -807,7 +807,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentApprovalSubmissionResponse
      */
-    public function postContentDocumentApprovalSubmission(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id): \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentApprovalSubmissionResponse
+    public function postContentDocumentApprovalSubmission(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id)
     {
         $request = $this->postContentDocumentApprovalSubmissionRequest($accessToken, $region, $content_reference_key, $marketplace_id);
 
@@ -1029,7 +1029,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentAsinRelationsResponse
      */
-    public function postContentDocumentAsinRelations(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id, $post_content_document_asin_relations_request): \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentAsinRelationsResponse
+    public function postContentDocumentAsinRelations(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id, $post_content_document_asin_relations_request)
     {
         $request = $this->postContentDocumentAsinRelationsRequest($accessToken, $region, $content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
 
@@ -1265,7 +1265,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentSuspendSubmissionResponse
      */
-    public function postContentDocumentSuspendSubmission(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id): \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentSuspendSubmissionResponse
+    public function postContentDocumentSuspendSubmission(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id)
     {
         $request = $this->postContentDocumentSuspendSubmissionRequest($accessToken, $region, $content_reference_key, $marketplace_id);
 
@@ -1486,7 +1486,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\SearchContentDocumentsResponse
      */
-    public function searchContentDocuments(AccessToken $accessToken, string $region, $marketplace_id, $page_token = null): \MehrIt\AmazonSellingPartner\Model\APlus\SearchContentDocumentsResponse
+    public function searchContentDocuments(AccessToken $accessToken, string $region, $marketplace_id, $page_token = null)
     {
         $request = $this->searchContentDocumentsRequest($accessToken, $region, $marketplace_id, $page_token);
 
@@ -1704,7 +1704,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\SearchContentPublishRecordsResponse
      */
-    public function searchContentPublishRecords(AccessToken $accessToken, string $region, $marketplace_id, $asin, $page_token = null): \MehrIt\AmazonSellingPartner\Model\APlus\SearchContentPublishRecordsResponse
+    public function searchContentPublishRecords(AccessToken $accessToken, string $region, $marketplace_id, $asin, $page_token = null)
     {
         $request = $this->searchContentPublishRecordsRequest($accessToken, $region, $marketplace_id, $asin, $page_token);
 
@@ -1943,7 +1943,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentResponse
      */
-    public function updateContentDocument(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id, $post_content_document_request): \MehrIt\AmazonSellingPartner\Model\APlus\PostContentDocumentResponse
+    public function updateContentDocument(AccessToken $accessToken, string $region, $content_reference_key, $marketplace_id, $post_content_document_request)
     {
         $request = $this->updateContentDocumentRequest($accessToken, $region, $content_reference_key, $marketplace_id, $post_content_document_request);
 
@@ -2180,7 +2180,7 @@ final class APlusSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\APlus\ValidateContentDocumentAsinRelationsResponse
      */
-    public function validateContentDocumentAsinRelations(AccessToken $accessToken, string $region, $marketplace_id, $post_content_document_request, $asin_set = null): \MehrIt\AmazonSellingPartner\Model\APlus\ValidateContentDocumentAsinRelationsResponse
+    public function validateContentDocumentAsinRelations(AccessToken $accessToken, string $region, $marketplace_id, $post_content_document_request, $asin_set = null)
     {
         $request = $this->validateContentDocumentAsinRelationsRequest($accessToken, $region, $marketplace_id, $post_content_document_request, $asin_set);
 

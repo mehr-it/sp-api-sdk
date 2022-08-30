@@ -59,7 +59,7 @@ final class ShipmentInvoicingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\GetInvoiceStatusResponse
      */
-    public function getInvoiceStatus(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\GetInvoiceStatusResponse
+    public function getInvoiceStatus(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->getInvoiceStatusRequest($accessToken, $region, $shipment_id);
 
@@ -254,7 +254,7 @@ final class ShipmentInvoicingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\GetShipmentDetailsResponse
      */
-    public function getShipmentDetails(AccessToken $accessToken, string $region, $shipment_id): \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\GetShipmentDetailsResponse
+    public function getShipmentDetails(AccessToken $accessToken, string $region, $shipment_id)
     {
         $request = $this->getShipmentDetailsRequest($accessToken, $region, $shipment_id);
 
@@ -450,7 +450,7 @@ final class ShipmentInvoicingSDK
      * @throws \MehrIt\AmazonSellingPartner\Exception\InvalidArgumentException
      * @return \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\SubmitInvoiceResponse
      */
-    public function submitInvoice(AccessToken $accessToken, string $region, $shipment_id, $body): \MehrIt\AmazonSellingPartner\Model\ShipmentInvoicing\SubmitInvoiceResponse
+    public function submitInvoice(AccessToken $accessToken, string $region, $shipment_id, $body)
     {
         $request = $this->submitInvoiceRequest($accessToken, $region, $shipment_id, $body);
 
